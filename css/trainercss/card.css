@@ -1,0 +1,24 @@
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5);
+    padding: 8px;
+    background-color: #ffffff;
+    height: 200px;
+    width: 95%;
+    border-radius: 10px;
+    display:flex;
+    padding: 20px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+  }
+
+  .card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.5);
+  }
+  
+  html { 
+    background: url(/images/peaceful-blur-4k.jpg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }

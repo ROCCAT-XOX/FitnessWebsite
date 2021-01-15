@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        
+        <!------------------------------------CSS------------------------------------------>
+       
+        <!--TRAINER DESIGN-->
+        <!--CARD-->
+        <link rel="stylesheet" href="css/trainercss/card.css">
+        <!--NAME-->
+        <link rel="stylesheet" href="css/trainercss/name.css">
+        <!--ADRESSE-->
+        <link rel="stylesheet" href="css/trainercss/adresse.css">
+        <!--EMAIL-->
+        <link rel="stylesheet" href="css/trainercss/email.css">
+        <!--ALTER-->
+        <link rel="stylesheet" href="css/trainercss/alter.css">
+        <!--ZIELE-->
+        <link rel="stylesheet" href="css/trainercss/ziel.css">
+        <link rel="stylesheet" href="css/trainercss/beschreibung.css">
+        <!--FORTSCHRITT-->
+        <link rel="stylesheet" href="css/trainercss/fortschritt.css">
+        <!--HEAD-->
+        <link rel="stylesheet" href="css/trainercss/head.css">
+        <!--BUTTON-->
+        <link rel="stylesheet" href="css/trainercss/button.css">
+        <!--POPUP-->
+        <link rel="stylesheet" href="css/trainercss/popup.css">
+        <!--FONTS&ICONS-->
+        <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700,900' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="css/trainercss/style-trainer.css">
+        <link rel="stylesheet" href="fonts/fontawesome/css/all.css">
+        
+        
+        <!--Loading Bar -->
+        <link rel="stylesheet" href="css/trainercss/loading-bar.css">
+        <script src="js/loading-bar.js"></script>
+
+        
+
+        <title>Trainer</title>
+    </head>
+
+    <body>
+        <!--HEAD-->
+        <div class="head">
+            <div class="title">
+                <h1 id="welcome">Willkommen</h1>
+                <h1 id="trainerName">Trainer</h1>
+            </div>
+        
+            <!--BUTTON ADD-->
+            <div class="userAdd">
+                <!-- Trigger/Open The Modal -->
+                <div class="ButtonLeft">
+                    <button onclick="neuenKundenHinzufügen()" class="useradd" id="useradd">Neuen Kunden anlegen</button>
+                </div>
+                
+                <div class="ButtonRight">
+                    <button class="LogOut" onclick="location.href='./index.html'"><i class="fa fa-sign-out-alt"></i> Ausloggen</button>
+                </div>
+                
+
+                <!-- The Modal -->
+                <div id="newKunde" class="modal">
+
+                    <!-- Modal content -->
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <h3>Neuen Kunden anlegen</h3>
+
+                        <form>
+                            <div class="eingabemaskeDaten">
+
+                                <div class="modalname">
+                                    <label for="fname">Vorname:</label><br>
+                                    <input class="css-input" type="text" id="fname" name="fname" value=""><br>
+                                    <label for="lname">Nachname:</label><br>
+                                    <input class="css-input" type="text" id="lname" name="lname" value=""><br>
+                                </div>
+
+                                <div class="modalMail">
+                                        <label for="email">Email:</label><br>
+                                        <input class="css-input" id="KundeEmail" required><br>
+                                </div>
+
+                                <div class="modalPhonenumber">
+                                    <label for="phonenumber">Telefonnummer:</label><br>
+                                    <input class="css-input" type="tel" id="KundeInputPhonenumber"><br>
+                                </div>
+                                
+                                <div class="modalBirthday">
+                                    <label for="Geburtsdatum">Geburtsdatum:</label><br>
+                                    <input class="css-input" type="date" id="date"><br>
+                                </div>
+                                
+                            </div>
+                            
+                            <div class="eingabemaskeAdresse">
+                                <div class="modalPlzOrt">
+                                    <label for="PLZ">PLZ:</label><br>
+                                    <input class="css-input" type="text" id="PLZ" name="PLZ" value=""><br>
+                                    <label for="Ort">Ort:</label><br>
+                                    <input class="css-input" type="text" id="Ort" name="Ort" value=""><br>
+                                </div>
+                                
+    
+                                
+                                <div class="modalStraße">
+                                    <label for="Straße und Hausnummer">Straße+Hausnummer:</label><br>
+                                    <input class="css-input" type="text" id="Straße" name="Straße" value="">
+                                    <input class="css-input" type="number" id="Hausnummer" name="Hausnummer" value="" style="width:50px"><br>
+                                </div>
+                                
+                                <div class="modalPasswort">
+                                    <label for="password">Passwort:</label><br>
+                                    <input class="css-input" type="password" id="password"><br>
+                                </div>
+                                
+                                <div class="modalGeschlecht">
+                                    <label for="geschlecht" >Geschlecht:</label><br>
+                                    <label class="radio-container m-r-45">Männlich
+                                    <input id="männlich" type="radio" checked="checked" name="gender" value="männlich">
+                                    <label class="radio-container m-r-45">Weiblich
+                                    <input id="weiblich" type="radio"  name="gender" value="weiblich">
+                                    <label class="radio-container m-r-45">Divers
+                                    <input id="divers" type="radio"  name="gender" value="divers">
+                                </div>
+                                
+                            </div>
+                            
+                            <div class="eingabeMasken">
+                                <div class="eingabemaskeZiele">
+                                    <label for="Ziele">Ziele:</label><br>
+                                    <textarea class="css-input" id="ziele" cols="35" rows="6" maxlength="300"></textarea>
+                                </div>
+
+                                <div class="eingabemaskeBeschreibung">
+                                    <label for="Beschreibung">Beschreibung:</label><br>
+                                    <textarea class="css-input" id="beschreibung" cols="35" rows="6" maxlength="300"></textarea>
+                                </div>
+
+                                
+
+                            </div>
+
+                            <div class="btnBestätigen">
+                                    <button class="userBestätigen" id="submit" type="submit" onclick="return addNewKunde()">Bestätigen</button>
+                            </div>
+                
+                            
+
+                        </form>    
+                    </div>
+                </div>
+            </div>
+        </div>
+
+<hr>
+        <!--CARD-->
+        <div id="1" class="row">
+            <div class="card">
+                <!--NAME-->
+                <div class="name" class="column" id="Name">
+                    <h2>Name</h2>
+                    <div class="vornameNachname">
+                        <p class="vorname">Felix</p>
+                        <p class="nachname">Harz</p>
+                    </div>
+                </div>
+                <!--ADRESSE-->
+                <div class="adresse" class="column" id="Adresse">
+                    <h2>Adresse</h2>
+                    <div class="adresse-content">
+                        <p class="plz">67354</p>
+                        <p class="ort">Speyer</p>
+                        <p class="strasse">Gayerstraße</p>
+                        <p class="hausnummer">23</p>
+                    </div>
+                </div>
+                <!--EMAIL-->
+                <div class="email" id="Email">
+                    <h2>E-Mail</h2>
+                    <p class="Email">felixharz9sdfsdf9@gmail.com</p>
+                </div>
+                <!--ALTER-->
+                <div class="alter" id="Alter">
+                    <h2>Alter</h2>
+                    <p class="Alter">21</p>
+                </div>
+                <!--ZIEL-->
+                <div class="ziel" id="Ziel">
+                    <h2>Ziel</h2>
+                    <li>Aufbauen</li>
+                </div>
+                <!--BESCHREIBUNG-->
+                <div class="beschreibung" id="Beschreibung">
+                    <h2>Beschreibung</h2>
+                    <p class="Beschreibung">Ipsum exercitation ex veniam sit excepteur irure id do amet reprehenderit id magna culpa enim.Labore duis aliqua qui esse in pariatur culpa in ex.Cupidatat aliquip Lorem nisi laborum.Cupidatat nisi aliqua laborum elit nisi laboris qui reprehenderit cupidatat labore in.</p>
+                </div>
+                <!--FORTSCHRITT-->
+                <div class="fortschritt" id="Fortschritt">
+                    <h2>Fortschritt</h2>
+                    <div class="ldBar label-center" class="fortschritt" data-value="50" data-fill-dir="ltr" data-transition-in="100"   data-preset="energy" data-stroke-dir="normal" data-img-size="200" style="width: 100%; height: 50%;"></div>
+                    
+                </div>
+
+
+
+                <!--Edit Button-->
+                <div class="editSection" id="editSection">
+                    <div class="editButtonSection">
+                        <button onclick="editKunde()" class="userEdit" id="useredit"><i class="fa fa-edit"></i></button>
+                    
+                        <button class="deleteUser"><i class="fa fa-trash"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--Second Modal-->
+        <div id="secondModal" class="modal">
+
+            <!-- Modal content -->
+            <div class="modal-content">
+                <span class="closeEdit">&times;</span>
+                <h3>User Edit</h3>
+
+                <form>
+                    <div class="eingabemaskeDaten">
+
+                        <div class="modalname">
+                            <label for="fname">Vorname:</label><br>
+                            <input class="css-input" type="text" id="firstname" name="fname" value=""><br>
+                            <label for="lname">Nachname:</label><br>
+                            <input class="css-input" type="text" id="lastname" name="lname" value=""><br>
+                        </div>
+
+                        <div class="modalMail">
+                            <label for="email">Email:</label><br>
+                            <input class="css-input" type="text" id="EditEmail" required><br>
+                        </div>
+
+                        <div class="modalPhonenumber">
+                            <label for="phonenumber">Telefonnummer:</label><br>
+                            <input class="css-input" type="tel" id="inputPhonenumber"><br>
+                        </div>
+                        
+                        <div class="modalBirthday">
+                            <label for="Geburtsdatum">Geburtsdatum:</label><br>
+                            <input class="css-input" type="date" id="bdate"><br>
+                        </div>
+                        
+                    </div>
+                    
+                    <div class="eingabemaskeAdresse">
+                        <div class="modalPlzOrt">
+                            <label for="PLZ">PLZ:</label><br>
+                            <input class="css-input" type="text" id="EditPLZ" name="PLZ" value=""><br>
+                            <label for="Ort">Ort:</label><br>
+                            <input class="css-input" type="text" id="EditOrt" name="Ort" value=""><br>
+                        </div>
+                        
+
+                        
+                        <div class="modalStraße">
+                            <label for="Straße und Hausnummer">Straße+Hausnummer:</label><br>
+                            <input class="css-input" type="text" id="EditStraße" name="Straße" value="">
+                            <input class="css-input" type="number" id="EditHausnummer" name="Hausnummer" value="" style="width:50px"><br>
+                        </div>
+                        
+                        <div class="modalPasswort">
+                            <label for="password">Passwort:</label><br>
+                            <input class="css-input" type="password" id="EditPassword"><br>
+                        </div>
+                        
+                        <div class="modalGeschlecht">
+                            <label for="geschlecht" >Geschlecht:</label><br>
+                            <label class="radio-container m-r-45">Männlich
+                            <input id="EditMännlich" type="radio" checked="checked" name="gender" value="männlich">
+                            <label class="radio-container m-r-45">Weiblich
+                            <input id="EditWeiblich" type="radio"  name="gender" value="weiblich">
+                            <label class="radio-container m-r-45">Divers
+                            <input id="EditDivers" type="radio"  name="gender" value="divers">
+                        </div>
+                        
+                    </div>
+                    
+                    <div class="eingabeMasken">
+                        <div class="eingabemaskeZiele">
+                            <label for="Ziele">Ziele:</label><br>
+                            <textarea class="css-input" id="EditZiele" cols="35" rows="6" maxlength="300"></textarea>
+                        </div>
+
+                        <div class="eingabemaskeBeschreibung">
+                            <label for="Beschreibung">Beschreibung:</label><br>
+                            <textarea class="css-input" id="EditBeschreibung" cols="35" rows="6" maxlength="300"></textarea>
+                        </div>
+
+                        
+
+                    </div>
+
+                    <div class="btnBestätigen">
+                            <button class="userBestätigen" id="EditSubmit" type="submit">Bestätigen</button>
+                    </div>
+        
+                    
+
+                </form>    
+            </div>
+        </div>
+        
+        <!--POPUP JS-->
+        <script src="js/popupTrainer.js"></script>
+        <script src="js/trainerInterface.js"></script>
+        <script src="js/popupEdit.js"></script>
+        <script src="js/trainerInterfaceOnLoad.js"></script>
+        
+        
+    </body>
+
+</html>

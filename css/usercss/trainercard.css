@@ -1,0 +1,49 @@
+.trainer{
+    width: 48%;
+    height: 84%;
+    float: left;
+    margin: 5px;
+    
+}
+
+.picture{
+    height: 80%;
+    margin: 0;
+}
+
+.name{
+    height: 10%;
+}
+/*         */
+.trainer2{
+    width: 48%;
+    height: 84%;
+    float: left;
+    margin: 5px;
+}
+
+.text{
+    height: 80%;
+}
+
+.social{
+    height: 10%;
+}
+#social,#kategorie{
+    margin:0;
+}
+
+h2{
+    margin:10px;
+}
+
+#text{
+    font-size: 30px;
+    margin: 0;
+}
+
+img{
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}

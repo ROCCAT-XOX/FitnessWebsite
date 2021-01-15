@@ -1,0 +1,13 @@
+.beschreibung{
+    text-align: left;
+    width: fit-content;
+    max-width: 50%;
+    width: 30%;
+    margin-right: 20px;
+}
+
+.Beschreibung{
+    width: 90%;
+    height: 50%;
+    overflow: auto;
+}

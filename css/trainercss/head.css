@@ -1,0 +1,9 @@
+.title{
+    text-align: center;
+    font-size:35px;
+}
+
+#welcome,#trainerName{
+    display: inline;
+    color: white;
+}

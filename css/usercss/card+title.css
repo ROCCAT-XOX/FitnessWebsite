@@ -1,0 +1,79 @@
+.card{
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.3);
+    transition: 0.3s;
+    border-radius: 10px;
+    height: 500px;
+    width: 48%;
+    float: left;
+    margin-right: 20px;
+    margin-left: 10px;
+    margin-top: 20px;
+    overflow: auto;
+    background-color: white;
+}
+
+.card-two{
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.3);
+    transition: 0.3s;
+    border-radius: 10px;
+    height: 500px;
+    width: 48%;
+    float: left;
+    margin-right: 10px;
+    margin-top: 20px;
+    overflow: auto;
+    background-color: white;
+}
+
+.courses{
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.3);
+    transition: 0.3s;
+    border-radius: 10px;
+    height: 500px;
+    width: 48%;
+    float: left;
+    margin-right: 20px;
+    margin-top: 20px;
+    margin-left: 10px;
+    margin-bottom: 20px;
+    overflow: auto;
+    background-color: white;
+}
+
+.card-trainer{
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.3);
+    transition: 0.3s;
+    border-radius: 10px;
+    height: 500px;
+    width: 48%;
+    float: left;
+    margin-right: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    overflow: auto;
+    background-color: white;
+    
+}
+
+.card:hover, .card-two:hover, .courses:hover, .card-trainer:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.5);
+  }
+
+.title-user{
+    text-align: center;
+    color: white;
+    font-size:35px;
+}
+
+h2,h3{
+    text-align: center;
+}
+
+html { 
+    background: url(/images/peaceful-blur-4k.jpg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+
