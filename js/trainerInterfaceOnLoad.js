@@ -249,6 +249,8 @@ function createButtonsOnLoad(){
     buttonEdit.className = "userEdit";
     buttonEdit.setAttribute("id", "useredit" + userEmail);
 
+    //----------------------------------------------Button zum Bearbeiten-----------------------------------------------//
+
     buttonEdit.onclick=function(){
 
         
@@ -261,8 +263,6 @@ function createButtonsOnLoad(){
         let key = buttonEdit.id.slice(8);
         let user = JSON.parse(localStorage.getItem(key));
 
-        //Hilfsvariabel beim Geschlecht
-        var x = "";
         
         //Modal mit entsprechenden Daten füllen
         document.getElementById("firstname").value = user.Vorname;
@@ -277,7 +277,6 @@ function createButtonsOnLoad(){
         document.getElementById("EditHausnummer").value = parseInt(user.Hausnummer);
         document.getElementById("EditPassword").value = user.Passwort;
         document.getElementById("EditEmail").value = user.Email;
-
         document.getElementById("EditZiele").value = user.Ziel;
         document.getElementById("EditBeschreibung").value = user.Beschreibung;
         
@@ -293,7 +292,6 @@ function createButtonsOnLoad(){
                     Vorname: document.getElementById("firstname").value,
                     Nachname: document.getElementById("lastname").value,
                     Email: key,
-                    Geschlecht: x,
                     Postleitzahl: document.getElementById("EditPLZ").value,
                     Ort: document.getElementById("EditOrt").value,
                     Strasse: document.getElementById("EditStraße").value,
@@ -314,7 +312,7 @@ function createButtonsOnLoad(){
 
         
     }
-    //---------------------------------------------------------------------------------------------//
+    //----------------------------------------------Button zum Löschen-----------------------------------------------//
     let buttonDelete = document.createElement("button");
     buttonDelete.className = "deleteUser";
     buttonDelete.setAttribute("id", "userdelete" + userEmail);

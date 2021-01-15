@@ -1,7 +1,26 @@
 //A unique id for each id
 let idBarId=0;
 
+document.getElementById("submit").addEventListener("click", required);
+
+function required(){
+    let x = document.forms["firstModal"]["email"].value;
+    if ( x == "" || x == null){
+        alert("Du hast keine E-Mail angegeben")
+        return false;
+    }
+    else(
+        addNewKunde()
+    )
+}
+
 function addNewKunde(){
+
+    let modal = document.getElementById("newKunde");
+    modal.style.display = "none";
+
+    let x = document.getElementById("KundeEmail").value;
+    console.log(x);
 
     let kunde = {
         Vorname: document.getElementById("fname").value,
@@ -21,33 +40,17 @@ function addNewKunde(){
     }
     
 
-
-    loadIntoStorage(kunde);
     
+    
+    loadIntoStorage(kunde);
     createCard();
 
-    let modal = document.getElementById("newKunde");
-    modal.style.display = "none";
+    
     return false;
 }
 
 function loadIntoStorage(kunde){ 
     localStorage.setItem(kunde.Email, JSON.stringify(kunde));
-}
-
-function getGeschlecht(){
-    if(document.getElementById("männlich").checked == true){
-        return document.getElementById("männlich").value;
-    }
-    else if(document.getElementById("weiblich").checked == true){
-        return document.getElementById("weiblich").value;
-    }
-    else if(document.getElementById("divers").checked == true){
-        return document.getElementById("divers").value;
-    }
-    else{
-        return;
-    }
 }
 
 function createCard(){
@@ -310,47 +313,52 @@ function createFortschritt(){
 }
 
 
-
-function createButtons(){
-    let divEditSection = document.createElement("div");
-    divEditSection.className = "editSection";
-    let divEditButtonSection = document.createElement("div");
-    divEditButtonSection.className = "editButtonSection";
-    let buttonEdit = document.createElement("button");
-    buttonEdit.className = "userEdit";
-    let buttonDelete = document.createElement("button");
-    buttonDelete.className = "deleteUser";
-    buttonDelete.setAttribute("id", "userdelete" + document.getElementById("KundeEmail").value);
-
-    buttonDelete.onclick=function(){
-
-
-        let x = buttonDelete.parentNode.parentNode.parentNode.parentNode.id;
-        let element = document.getElementById(x);
-        console.log(x);
-        element.remove();
-        let key = x.slice(12);
-        console.log(key);
-        localStorage.removeItem(key);
+try{
+    function createButtons(){
+        let divEditSection = document.createElement("div");
+        divEditSection.className = "editSection";
+        let divEditButtonSection = document.createElement("div");
+        divEditButtonSection.className = "editButtonSection";
+        let buttonEdit = document.createElement("button");
+        buttonEdit.className = "userEdit";
+        let buttonDelete = document.createElement("button");
+        buttonDelete.className = "deleteUser";
+        buttonDelete.setAttribute("id", "userdelete" + document.getElementById("KundeEmail").value);
+    
+        buttonDelete.onclick=function(){
+    
+    
+            let x = buttonDelete.parentNode.parentNode.parentNode.parentNode.id;
+            let element = document.getElementById(x);
+            console.log(x);
+            element.remove();
+            let key = x.slice(12);
+            console.log(key);
+            localStorage.removeItem(key);
+        }
+    
+    
+        let iButtonEdit = document.createElement("i");
+        iButtonEdit.className = "fa fa-edit";
+        let iButtonDelete = document.createElement("i");
+        iButtonDelete.className = "fa fa-trash";
+    
+        buttonEdit.appendChild(iButtonEdit);
+        buttonDelete.appendChild(iButtonDelete);
+    
+        divEditButtonSection.appendChild(buttonEdit);
+        divEditButtonSection.appendChild(buttonDelete);
+    
+        divEditSection.appendChild(divEditButtonSection);
+    
+        return divEditSection;
+    
     }
 
-
-    let iButtonEdit = document.createElement("i");
-    iButtonEdit.className = "fa fa-edit";
-    let iButtonDelete = document.createElement("i");
-    iButtonDelete.className = "fa fa-trash";
-
-    buttonEdit.appendChild(iButtonEdit);
-    buttonDelete.appendChild(iButtonDelete);
-
-    divEditButtonSection.appendChild(buttonEdit);
-    divEditButtonSection.appendChild(buttonDelete);
-
-    divEditSection.appendChild(divEditButtonSection);
-
-    return divEditSection;
-
+}catch{
+    console.log("ist schon ok!");
 }
+
       
 	
 
@@ -363,8 +371,10 @@ function createName(){
     hName.innerHTML= "Name";
     let pVorname = document.createElement("p");
     pVorname.innerHTML = document.getElementById("fname").value + " ";
+    pVorname.className = "vorname";
     let pNachname = document.createElement("p");
     pNachname.innerHTML = document.getElementById("lname").value;
+    pNachname.className = "nachname";
 
 
     
@@ -386,12 +396,16 @@ function createAdresse(){
     hAdresse.innerHTML= "Adresse";
     let pPLZ = document.createElement("p");
     pPLZ.innerHTML = document.getElementById("PLZ").value;
+    pPLZ.className = "plz";
     let pOrt = document.createElement("p");
     pOrt.innerHTML = document.getElementById("Ort").value;
+    pOrt.className = "ort";
     let pStrasse = document.createElement("p");
     pStrasse.innerHTML = document.getElementById("Straße").value + " ";
+    pStrasse.className = "strasse";
     let pHausnummer = document.createElement("p");
     pHausnummer.innerHTML = document.getElementById("Hausnummer").value;
+    pHausnummer.className = "hausnummer";
 
     divAdresseContent.appendChild(pPLZ);
     divAdresseContent.appendChild(pOrt);
@@ -501,10 +515,69 @@ function createButtons(){
     divEditButtonSection.className = "editButtonSection";
     let buttonEdit = document.createElement("button");
     buttonEdit.className = "userEdit";
+
+    buttonEdit.onclick=function(){
+
+        
+        //Modal öffnen zum editieren eines Users
+        let modal = document.getElementById("secondModal");
+        modal.style.display = "block";
+
+        //die Wert aus dem localStorage zum fülen des Modals holen
+        let btn = document.getElementById("EditSubmit");
+        let key = buttonEdit.id.slice(8);
+        let user = JSON.parse(localStorage.getItem(key));
+
+        
+        //Modal mit entsprechenden Daten füllen
+        document.getElementById("firstname").value = user.Vorname;
+        document.getElementById("lastname").value = user.Nachname;
+        console.log(key);
+        console.log(user.Email);
+        document.getElementById("inputPhonenumber").value = user.Telefonnummer;
+        document.getElementById("bdate").value = user.Geburtsdatum;
+        document.getElementById("EditPLZ").value = user.Postleitzahl;
+        document.getElementById("EditOrt").value = user.Ort;
+        document.getElementById("EditStraße").value = user.Strasse;
+        document.getElementById("EditHausnummer").value = parseInt(user.Hausnummer);
+        document.getElementById("EditPassword").value = user.Passwort;
+        document.getElementById("EditEmail").value = user.Email;
+        document.getElementById("EditZiele").value = user.Ziel;
+        document.getElementById("EditBeschreibung").value = user.Beschreibung;
+        
+        //Neue Daten in localStorage überschreiben, beim Drücken des Bestätigen Buttons
+        
+        console.log(key);
+        btn.onclick = function(){
+
+            
+            if(document.getElementById("EditEmail").value != "")
+            {
+                localStorage.setItem(key, JSON.stringify({
+                    Vorname: document.getElementById("firstname").value,
+                    Nachname: document.getElementById("lastname").value,
+                    Email: key,
+                    Postleitzahl: document.getElementById("EditPLZ").value,
+                    Ort: document.getElementById("EditOrt").value,
+                    Strasse: document.getElementById("EditStraße").value,
+                    Hausnummer: document.getElementById("EditHausnummer").value,
+                    Telefonnummer: document.getElementById("inputPhonenumber").value,
+                    Geburtsdatum: document.getElementById("bdate").value,
+                    Beschreibung: document.getElementById("EditBeschreibung").value,
+                    Ziel: document.getElementById("EditZiele").value,
+                    Passwort: document.getElementById("EditPassword").value
+                    }));
+            }
+
+            
+        }
+
+
+    //----------------------------------------------Button zum Löschen-----------------------------------------------//
     let buttonDelete = document.createElement("button");
     buttonDelete.className = "deleteUser";
     buttonDelete.setAttribute("id", "userdelete" + document.getElementById("KundeEmail").value);
-
+    
     buttonDelete.onclick=function(){
 
 
@@ -532,5 +605,5 @@ function createButtons(){
     divEditSection.appendChild(divEditButtonSection);
 
     return divEditSection;
-
+    }
 }

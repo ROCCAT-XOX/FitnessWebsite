@@ -72,7 +72,7 @@
                         <span class="close">&times;</span>
                         <h3>Neuen Kunden anlegen</h3>
 
-                        <form>
+                        <form name="firstModal" required>
                             <div class="eingabemaskeDaten">
 
                                 <div class="modalname">
@@ -84,7 +84,7 @@
 
                                 <div class="modalMail">
                                         <label for="email">Email:</label><br>
-                                        <input class="css-input" id="KundeEmail" required><br>
+                                        <input class="css-input" id="KundeEmail" name="email"><br>
                                 </div>
 
                                 <div class="modalPhonenumber">
@@ -148,7 +148,7 @@
                             </div>
 
                             <div class="btnBestätigen">
-                                    <button class="userBestätigen" id="submit" type="submit" onclick="return addNewKunde()">Bestätigen</button>
+                                    <button class="userBestätigen" id="submit" type="submit" onclick="required()">Bestätigen</button>
                             </div>
                 
                             
@@ -305,7 +305,7 @@
                     </div>
 
                     <div class="btnBestätigen">
-                            <button class="userBestätigen" id="EditSubmit" type="submit">Bestätigen</button>
+                            <button class="userBestätigen" id="EditSubmit" type="submit" >Bestätigen</button>
                     </div>
         
                     
@@ -319,6 +319,7 @@
         <script src="js/trainerInterface.js"></script>
         <script src="js/popupEdit.js"></script>
         <script src="js/trainerInterfaceOnLoad.js"></script>
+        
         
         
     </body>

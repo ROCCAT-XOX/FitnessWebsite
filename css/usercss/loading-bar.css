@@ -19,18 +19,4 @@
   content: "";
 }
 
-.ldBar path.mainline {
-  stroke-width: 8;
-  stroke: rgb(110, 195, 252);
-  stroke-linecap: round;
-}
-.ldBar path.baseline {
-  
-  stroke-width: 14;
-  stroke: #0ee93e;
-  stroke-linecap: round;
-  filter:url(#custom-shadow);
-  width: 150px;
-  height: 150px;
-  
-}
+
