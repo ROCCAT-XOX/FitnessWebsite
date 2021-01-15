@@ -319,15 +319,17 @@ function createButtonsOnLoad(){
 
     buttonDelete.onclick=function(){
 
+        let bestätigungsfeld = confirm("Sind Sie sicher, dass Sie den Kunden löschen wollen?")
 
-       
-        let x = buttonDelete.parentNode.parentNode.parentNode.parentNode.id;
-        let element = document.getElementById(x);
-        console.log(x);
-        element.remove();
-        let key = x.slice(12);
-        console.log(key);
-        localStorage.removeItem(key);
+        if(bestätigungsfeld == true){
+            let x = buttonDelete.parentNode.parentNode.parentNode.parentNode.id;
+            let element = document.getElementById(x);
+            console.log(x);
+            element.remove();
+            let key = x.slice(12);
+            console.log(key);
+            localStorage.removeItem(key);
+        }
     }
 
     

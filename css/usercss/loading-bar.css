@@ -1,7 +1,10 @@
 .ldBar {
   position: relative;
-  font-size: 40px;
-  
+left: 50%;
+-webkit-transform: translateX(-50%);
+-ms-transform: translateX(-50%);
+transform: translateX(-50%);
+
 }
 .ldBar.label-center > .ldBar-label {
   position: absolute;
@@ -9,14 +12,18 @@
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
-  text-shadow: 0 0 3px #fff;
+  
+  
 }
 .ldBar-label:after {
   content: "%";
   display: inline;
 }
-.ldBar.no-percent .ldBar-label:after {
-  content: "";
-}
 
+.ldBar-label {
+  color: rgb(0, 0, 0);
+  font-family: 'Roboto';
+  font-size: 100%;
+  
+}
 

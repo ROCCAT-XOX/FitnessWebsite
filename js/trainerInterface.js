@@ -327,7 +327,9 @@ try{
     
         buttonDelete.onclick=function(){
     
-    
+            let bestätigungsfeld = confirm("Sind Sie sicher, dass Sie den Kunden löschen wollen?")
+
+        if(bestätigungsfeld == true){
             let x = buttonDelete.parentNode.parentNode.parentNode.parentNode.id;
             let element = document.getElementById(x);
             console.log(x);
@@ -335,6 +337,7 @@ try{
             let key = x.slice(12);
             console.log(key);
             localStorage.removeItem(key);
+        }
         }
     
     

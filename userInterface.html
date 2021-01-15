@@ -23,10 +23,16 @@
 
         <!--TRAINERCARD-->
         <link rel="stylesheet" href="css/usercss/trainercard.css">
+
+        <!--POPUP-->
+        <link rel="stylesheet" href="css/usercss/popup.css">
         
         <!--FONTS-->
         <link rel="stylesheet" href="fonts/fontawesome/css/all.css">
-    
+
+        <!--BUTTON-->
+        <link rel="stylesheet" href="css/usercss/button.css">
+
         <!--JS-->
         <!--ProgressCircle-->
         <script type="text/javascript" src="js/loading-bar.js"></script>
@@ -51,10 +57,28 @@
     <!--USERNAME-->
             <div class="username">
                 <h2>Ziele</h2>
-                <button class="zielAdd">Ziel anlegen</button>
+                <button class="zielAdd" id="btnZielAdd">Ziel anlegen</button>
                 <button class="underzielAdd">Unterziel anlegen</button>
                 <hr>
             </div>
+            <!--THE MODAL-->
+            <div class="modal" id="newZiel" style="z-index: 1;">
+                <!--Modal Content-->
+                <div class="modal-content" id="newZiel-content" style="z-index: 1;">
+                    <span class="close">&times;</span>
+                    <h3>Neues Ziel anlegen</h3>
+                    <!--FORM-->
+                    <form name="zielAnlegen">
+                        <div class="inputZiel">
+                            <label for="inputZiel">Hauptziel:</label>
+                            <input class="css-input" type="text" id="inputFieldZiel" value="" style="z-index: 1;"><br>
+                            <button class="submit">Bestätigen</button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+            <!--Modal End-->
     <!--TABELLE-ZIELE-->
             <div class="targets">
                 <table class="table">
@@ -144,7 +168,7 @@
             </div>
     <!--FORTSCHRITT-CIRCLE-->
             <div class="progress">
-                <div class="ldBar label-center" data-value="40" style="width:100%;height:300px" data-preset="circle"></div>
+                <div class="ldBar label-center" data-value="40"  data-preset="circle"></div>
             </div>
             <!--Shadow insert-->
         </div>
@@ -232,5 +256,7 @@
         </div>
 
     </div>
+
+    <script src="/js/popupUser.js"></script>
     </body>
 </html>

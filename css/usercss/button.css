@@ -1,0 +1,46 @@
+.BtnLogOut{
+    background-color:#ffffff;
+	border-radius:6px;
+	border: black;
+	display:inline-block;
+	cursor:pointer;
+	color:black;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:15px 20px;
+	text-decoration:none;
+}
+
+.zielAdd,.underzielAdd{
+    margin: 0 10px 0 10px;
+    box-shadow:inset 0px 1px 0px 0px #ffffff;
+	background:linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%);
+	background-color:#ffffff;
+	border-radius:6px;
+	border:1px solid #dcdcdc;
+	display:inline-block;
+	cursor:pointer;
+	color:#020202;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:10px 25px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #ffffff;
+
+}
+
+.submit{
+    background-color:#597e7b;
+	border-radius:6px;
+	border: black;
+	display:inline-block;
+	cursor:pointer;
+	color:black;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:15px 27px;
+	text-decoration:none;
+}
