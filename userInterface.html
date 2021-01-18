@@ -62,7 +62,7 @@
                 <hr>
             </div>
             <!--THE MODAL-->
-            <div class="modal" id="newZiel" style="z-index: 1;">
+            <div class="modal" id="newHauptziel" style="z-index: 1;">
                 <!--Modal Content-->
                 <div class="modal-content" id="newZiel-content" style="z-index: 1;">
                     <span class="close">&times;</span>
@@ -72,7 +72,7 @@
                         <div class="inputZiel">
                             <label for="inputZiel">Hauptziel:</label>
                             <input class="css-input" type="text" id="inputFieldZiel" value="" style="z-index: 1;"><br>
-                            <button class="submit">Bestätigen</button>
+                            <button id="hauptzielsubmit" class="submit">Bestätigen</button>
                         </div>
                     </form>
 
@@ -80,9 +80,9 @@
             </div>
             <!--Modal End-->
     <!--TABELLE-ZIELE-->
-            <div class="targets">
-                <table class="table">
-    <!--TABELLE-HEAD-->
+            <div id="userZiele" class="targets">
+                <!-- <table class="table">
+    <!--TABELLE-HEAD
                     <thead>
                         <tr id="head">
                             <th class="headt-title">Aufbauen</th>
@@ -93,7 +93,7 @@
                             <th class="headt-title">Test</th> 
                         </tr>
                     </thead>
-    <!--TABELLE-BODY-->
+    <!--TABELLE-BODY
                     <tbody>
                         <tr id="content">
                             <td>
@@ -157,7 +157,7 @@
                             
                         </tr>
                     </tbody>
-                </table>
+                </table> -->
             </div>
         </div>
     <!--CARD-FORTSCHRITT----------------------------------------------------------------------->
@@ -258,5 +258,6 @@
     </div>
 
     <script src="/js/popupUser.js"></script>
+    <script src="/js/userInterface.js"></script>
     </body>
 </html>

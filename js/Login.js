@@ -52,18 +52,20 @@ let kunde = [
     }
 ]
 
+let angemeldeterUser;
 
 function anmelden(){
     let emailEingabe = document.getElementById("email").value;
     let passwortEingabe = document.getElementById("pw").value;
     
-    //localStorage.setItem("robert.downey@gmail.com", JSON.stringify(kunde[0]));
     var retrievedKunde = localStorage.getItem(emailEingabe);
     retrievedKunde = JSON.parse(retrievedKunde);
 
     try{
         if(emailEingabe == retrievedKunde.Email){
             if(passwortEingabe == retrievedKunde.Passwort){
+
+                localStorage.setItem("aktiv", emailEingabe)
                 window.location ="userInterface.html";
                 return false;
             }

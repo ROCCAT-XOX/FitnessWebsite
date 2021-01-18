@@ -24,7 +24,10 @@ function loadSite(){
         i = 0, key;
 
     for (; key = keys[i]; i++) {
-        archive.push( key + '=' + localStorage.getItem(key));
+        if(key.includes("@")){
+            archive.push( key + '=' + localStorage.getItem(key));
+        }
+        
     }
     console.log(archive);
 
