@@ -3,6 +3,15 @@ function logout(){
     window.location ="index.html";
 }
 
+//
+
+let userZiele = [];
+
+//let user = localStorage.getItem("aktiv");
+//ziele.hauptziel = "";
+//ziele.unterziele = [];
+//userZiele.push(ziele);
+//localStorage.setItem(user + "+", JSON.stringify(userZiele));
 
 //Modal zum hinzufügen eines Hauptziels
 document.getElementById("btnZielAdd").addEventListener("click", ModalneuesHauptzielHinzufügen());
@@ -37,7 +46,7 @@ function ModalneuesHauptzielHinzufügen(){
 
 
 let i = 0;
-
+let r = 0;
 
 //Fügt ein neues Hauptziel hinzu und erstellt die Tabelle
 function neuesHauptzielHinzufügen(){
@@ -59,6 +68,21 @@ function neuesHauptzielHinzufügen(){
     let trKopf = document.createElement("tr");
     let thHauptziel = document.createElement("th");
     thHauptziel.innerHTML = document.getElementById("inputFieldHauptziel").value;
+    
+    //Hauptziel wird in den localStorage des eingeloggten Users gespeichert
+    /*let user = localStorage.getItem("aktiv");
+    ziele.hauptziel = document.getElementById("inputFieldHauptziel").value;
+    ziele.unterziele = [];
+    userZiele.push(ziele);*/
+    let ziele = new Object();
+    let user = localStorage.getItem("aktiv");
+    userZiele.push(ziele);
+    userZiele[r].hauptziel = document.getElementById("inputFieldHauptziel").value;
+    userZiele[r].unterziele = [];
+    localStorage.setItem(user + "+", JSON.stringify(userZiele));
+    r++;
+    
+    
     
     let thButtonZiel = document.createElement("th");
     let buttonUnterziel = document.createElement("button");
@@ -92,6 +116,49 @@ function neuesHauptzielHinzufügen(){
         
             let tdUnterziel = document.createElement("td");
             tdUnterziel.innerHTML = document.getElementById("inputFieldUnterziel").value;
+            //console.log(document.getElementById("tabelle0").getElementsByTagName("thead")[0].getElementsByTagName("tr")[0].getElementsByTagName("th")[0].innerHTML);
+            //console.log(userZiele[0].hauptziel);
+            //Unterziele in den LocalStorage speichern:
+            //angemeldeter User
+            let user = localStorage.getItem("aktiv");
+            //Ziele des angemeldeten Users
+            /*localStorage.getItem(user + "+");
+            for(let i=0; i<userZiele.length; i++){
+                for(let r=0; r<userZiele.length;r++){
+                    if(document.getElementById("tabelle" + i.toString()).getElementsByTagName("thead")[0].getElementsByTagName("tr")[0].getElementsByTagName("th")[0].innerHTML) == userZiele[r].hauptziel){
+                        userZiele[r].unterziele.push(document.getElementById("inputFieldUnterziel").value);
+                    }
+                }
+                
+            }*/
+
+            let th = [];
+            for(let i=0;i<userZiele.length;i++){
+                th.push(document.getElementById("tabelle" + i.toString()).getElementsByTagName("thead")[0].getElementsByTagName("tr")[0].getElementsByTagName("th")[0].innerHTML);
+            }
+            console.log(th);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             let tdUnterzielErledigt = document.createElement("td");
             tdUnterzielErledigt.innerHTML = "Nicht Erledigt";
 
