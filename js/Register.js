@@ -1,12 +1,15 @@
 let passwortChecked=false;
 
+
+//Funktion wird aufgeruden, wenn jemand auf Registrieren klickt
 function newKunde(){
     
+
+    //Daten werden übernommen, die Kunde in die Eingabefelder eingegeben hat
     let kunde = {
         Vorname: document.getElementById("vorname").value,
         Nachname: document.getElementById("nachname").value,
         Geburtsdatum: document.getElementById("geburtsdatum").value,
-        //Geschlecht: getGeschlecht(),
         Email: document.getElementById("email").value,
         Telefonnummer: document.getElementById("telefonnummer").value,
         Passwort: checkPasswort(),
@@ -19,6 +22,8 @@ function newKunde(){
         Fortschritt: 0
     }
 
+
+    //Wenn der Kunde, alle Felder ausgefüllt hat und die Variable passwortChecked true ist, wird er im LocalStorage gespeichert und auf die Login Seite weiter geleitet
     if(kunde.Vorname != "" && kunde.Nachname != "" && kunde.Geburtsdatum != "" && kunde.Email != "" && kunde.Telefonnummer != "" && kunde.Passwort != ""){
         if(passwortChecked){
             loadIntoStorage(kunde);
@@ -34,6 +39,7 @@ function newKunde(){
     } 
 }
 
+//Es wird überprüft ob beide Passworteingaben übereinstimmen
 function checkPasswort(){
     
     while(!passwortChecked){ 
@@ -53,17 +59,3 @@ function loadIntoStorage(kunde){
     localStorage.setItem(document.getElementById("email").value, JSON.stringify(kunde));
 }
 
-/*function getGeschlecht(){
-    if(document.getElementById("männlich").checked == true){
-        return document.getElementById("männlich").value;
-    }
-    else if(document.getElementById("weiblich").checked == true){
-        return document.getElementById("weiblich").value;
-    }
-    else if(document.getElementById("divers").checked == true){
-        return document.getElementById("divers").value;
-    }
-    else{
-        return;
-    }
-}*/

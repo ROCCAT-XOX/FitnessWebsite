@@ -1,3 +1,6 @@
+//Im Grunde hat diese Datei die geiche Aufgabe wie trainerInterface.js, nur dass hier alle Daten/Information/HTM Elemente, etc 
+//aus dem LocalStorage auch bei neuladen der Seite angezeigt werden
+
 let emailKey = [];
 let arrayToExtractEmailKeys = [];
 let user;
@@ -13,12 +16,15 @@ let userZiel;
 let userBeschreibung;
 let userFortschritt;
 
+//wenn die Seite neu geladen wird, soll die Funktion loadSite() aufgerufen werden
 window.onload = function (){
     loadSite()
 }
 
+
 function loadSite(){
     
+    //Gibt mir alle Keys im LocalStorage, die das Zeichen "@" enthalten
     let archive = [],
         keys = Object.keys(localStorage),
         i = 0, key;
@@ -39,6 +45,7 @@ function loadSite(){
 
     console.log(emailKey);
 
+    //Die Funktion createCardOnLoad() wird nun so auft ausgeführt wie viel Keys mit @ Zeichen, sprich User es gibt 
     for(let i=0; i<archive.length;i++){
         user = JSON.parse(localStorage.getItem(emailKey[i]));
         userVorname = user.Vorname;
@@ -56,6 +63,7 @@ function loadSite(){
     }
 }
 
+//Funktion, die Cards erstellt, in der die User angezeigt werden; diese ruft eine Reihe von weiteren Funktionen auf, die die Card einzeln zusammenstellt
 function createCardOnLoad(){
     let divAußenCard = document.createElement("div");
     divAußenCard.className = "row";
@@ -79,6 +87,7 @@ function createCardOnLoad(){
     
 }
 
+//die loadbar bekommt die entsprechenden Parameter gesetzt
 function renderIdBar(){
 	let config={
 	    "stroke": '#f00',
@@ -91,6 +100,7 @@ function renderIdBar(){
 	let ldBar = new window.ldBar("#ldBar_"+idBarId, config);
 }
 
+//Der Namens-Teil von der Card wird erstellt
 function createNameOnLoad(){
     let divName = document.createElement("div");
     divName.classList.add("name", "column");
@@ -116,6 +126,7 @@ function createNameOnLoad(){
     return divName;
 }
 
+//Der Adressen-Teil von der Card wird erstellt
 function createAdresseOnLoad(){
     let divAdresse = document.createElement("div");
     divAdresse.classList.add("adresse", "column");
@@ -148,6 +159,7 @@ function createAdresseOnLoad(){
 
 }
 
+//Der Email-Teil von der Card wird erstellt
 function createEmailOnLoad(){
     let divEmail = document.createElement("div");
     divEmail.className = "email";
@@ -164,6 +176,7 @@ function createEmailOnLoad(){
 
 }
 
+//Der Alter-Teil von der Card wird erstellt
 function createAlterOnLoad(){
     let divAlter = document.createElement("div");
     divAlter.className = "alter";
@@ -179,6 +192,7 @@ function createAlterOnLoad(){
     return divAlter;
 }
 
+//Da nur das Geburtsdatum angegeben wird, aber das Alter angezeigt werden soll, muss zunächst das Alter berechnet werden
 function getAlterOnLoad(){
     let today = new Date();
     console.log(userAlter);
@@ -192,6 +206,7 @@ function getAlterOnLoad(){
 
 }
 
+//Der Ziel-Teil von der Card wird erstellt
 function createZielOnLoad(){
     let divZiel = document.createElement("div");
     divZiel.className = "ziel";
@@ -207,6 +222,7 @@ function createZielOnLoad(){
     return divZiel;
 }
 
+//Der Beschreibungs-Teil von der Card wird erstellt
 function createBeschreibungOnLoad(){
     let divBeschreibung = document.createElement("div");
     divBeschreibung.className = "beschreibung";
@@ -223,6 +239,7 @@ function createBeschreibungOnLoad(){
 
 }
 
+//Der Fortschritt-Teil von der Card wird erstellt
 function createFortschrittOnLoad(){
     ++idBarId;
     let divFortschritt = document.createElement("div");
@@ -309,10 +326,6 @@ function createButtonsOnLoad(){
 
             
         }
-
-
-        //Überarbeitete Daten werden erst nach Aktualisierung der Seite in den Cards angezeigt!!
-
         
     }
     //----------------------------------------------Button zum Löschen-----------------------------------------------//
@@ -323,6 +336,10 @@ function createButtonsOnLoad(){
     buttonDelete.onclick=function(){
 
         let bestätigungsfeld = confirm("Sind Sie sicher, dass Sie den Kunden löschen wollen?")
+
+        //x enthält die ID der Card
+        //element ist schließlich die Card und wird gelöscht
+        //es wird anhand der ID der Key zusammengeschnitten, um den betreffenden User auch komplett aus dem LocalStorage zu entfernen
 
         if(bestätigungsfeld == true){
             let x = buttonDelete.parentNode.parentNode.parentNode.parentNode.id;

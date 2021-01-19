@@ -1,3 +1,5 @@
+//Trainer werden Hart Codiert
+
 let trainer = [
     {
         ID: "1",
@@ -42,18 +44,8 @@ let trainer = [
         Passwort: "fitness"
     }
 ]
-let kunde = [
-    {
-        ID: "1",
-        Vorname: "robert",
-        Nachname: "downey jr",
-        Email: "robert.downey@gmail.com",
-        Passwort: "ironman"
-    }
-]
 
-let angemeldeterUser;
-
+//Funktion wird ausgeführt, wenn ein User sich anmelden will
 function anmelden(){
     let emailEingabe = document.getElementById("email").value;
     let passwortEingabe = document.getElementById("pw").value;
@@ -61,6 +53,8 @@ function anmelden(){
     var retrievedKunde = localStorage.getItem(emailEingabe);
     retrievedKunde = JSON.parse(retrievedKunde);
 
+
+    //Zunächst wird überprüft, ob die eingegebenen Daten von einem Kunden stammen, dabei muss natürlich Email-Adresse und Passwort übereinstimmen
     try{
         if(emailEingabe == retrievedKunde.Email){
             if(passwortEingabe == retrievedKunde.Passwort){
@@ -78,6 +72,8 @@ function anmelden(){
     catch{
         console.log("Kein gültiges Kundenkonto!");
     }
+
+    //Wenn die Eingabe-Daten nicht stimmen, wird geprüft, ob sich ein Trainer einloggen möchte; hier wird ebenfalls getestet, ob Passwort und Email übereinstimmen
     try{
         for(let i=0; i<trainer.length; i++){
             if(emailEingabe == trainer[i].Email){

@@ -47,7 +47,7 @@
         <div class="title-user">
             <h1 id="title-user">Willkommen</h1>
             <div class="LogOut">
-                <button class="BtnLogOut" onclick="location.href='./index.html'">Ausloggen<i class="fa fa-sign-out-alt"></i></button>
+                <button id="userLogout" class="BtnLogOut" onclick="logout()">Ausloggen<i class="fa fa-sign-out-alt"></i></button>
             </div>
         </div>
 <hr> 
@@ -61,24 +61,42 @@
                 <button class="underzielAdd">Unterziel anlegen</button>
                 <hr>
             </div>
-            <!--THE MODAL-->
+            <!--THE MODAL Hauptziel-->
             <div class="modal" id="newHauptziel" style="z-index: 1;">
                 <!--Modal Content-->
-                <div class="modal-content" id="newZiel-content" style="z-index: 1;">
+                <div class="modal-content" id="newHauptziel-content" style="z-index: 1;">
                     <span class="close">&times;</span>
                     <h3>Neues Ziel anlegen</h3>
                     <!--FORM-->
                     <form name="zielAnlegen">
                         <div class="inputZiel">
                             <label for="inputZiel">Hauptziel:</label>
-                            <input class="css-input" type="text" id="inputFieldZiel" value="" style="z-index: 1;"><br>
-                            <button id="hauptzielsubmit" class="submit">Bestätigen</button>
+                            <input class="css-input" type="text" id="inputFieldHauptziel" value="" style="z-index: 1;"><br>
+                            <button  onclick="return neuesHauptzielHinzufügen()" id="hauptzielsubmit" class="submit">Bestätigen</button>
                         </div>
                     </form>
 
                 </div>
             </div>
-            <!--Modal End-->
+            <!--Modal Hauptziel End-->
+            <!--THE MODAL Unterziel-->
+            <div class="modal" id="newUnterziel" style="z-index: 1;">
+                <!--Modal Content-->
+                <div class="modal-content" id="newUnterziel-content" style="z-index: 1;">
+                    <span class="close">&times;</span>
+                    <h3>Neues Unterziel anlegen</h3>
+                    <!--FORM-->
+                    <form name="zielAnlegen">
+                        <div class="inputZiel">
+                            <label for="inputZiel">Unterziel:</label>
+                            <input class="css-input" type="text" id="inputFieldUnterziel" value="" style="z-index: 1;"><br>
+                            <button  id="unterzielsubmit" class="submit">Bestätigen</button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+            <!--Modal Unterziel End-->
     <!--TABELLE-ZIELE-->
             <div id="userZiele" class="targets">
                 <!-- <table class="table">
