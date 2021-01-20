@@ -1,6 +1,8 @@
 //A unique id for each id
 let idBarId=0;
 
+let userZiele = [];
+
 
 //Der Bestätigen Button des Modals; es wird überprüft ob das Email-Feld ausgefüllt ist und wenn ja wird die Funktion addNewKunde() aufgerufen
 document.getElementById("submit").addEventListener("click", required);
@@ -49,6 +51,9 @@ function addNewKunde(){
 //Der Kunde wird als JSON String im LocalStorage gespeichert mit der Email als Key
 function loadIntoStorage(kunde){ 
     localStorage.setItem(kunde.Email, JSON.stringify(kunde));
+
+    //Wird gleichzeitig ein Platz für die Ziele reserviert
+    localStorage.setItem(kunde.Email+"+", JSON.stringify(userZiele));
 }
 
 
@@ -330,6 +335,7 @@ function createButtons(){
             let key = x.slice(12);
             console.log(key);
             localStorage.removeItem(key);
+            localStorage.removeItem(key + "+");
         }
     }
 

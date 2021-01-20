@@ -1,4 +1,5 @@
 let passwortChecked=false;
+let userZiele = [];
 
 
 //Funktion wird aufgeruden, wenn jemand auf Registrieren klickt
@@ -29,6 +30,7 @@ function newKunde(){
             loadIntoStorage(kunde);
             alert("Registirerung erfolgreich!")
             window.location = "login.html";
+            localStorage.setItem(kunde.Email+"+", JSON.stringify(userZiele)); //Wird ein Platz für die Ziele reserviert
             return false;
         }
     }

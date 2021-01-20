@@ -30,7 +30,7 @@ function loadSite(){
         i = 0, key;
 
     for (; key = keys[i]; i++) {
-        if(key.includes("@")){
+        if(key.includes("@") == true && key.includes("+") == false){
             archive.push( key + '=' + localStorage.getItem(key));
         }
         
@@ -45,7 +45,7 @@ function loadSite(){
 
     console.log(emailKey);
 
-    //Die Funktion createCardOnLoad() wird nun so auft ausgeführt wie viel Keys mit @ Zeichen, sprich User es gibt 
+    //Die Funktion createCardOnLoad() wird nun so oft ausgeführt wie viel Keys mit @ Zeichen, sprich User es gibt 
     for(let i=0; i<archive.length;i++){
         user = JSON.parse(localStorage.getItem(emailKey[i]));
         userVorname = user.Vorname;
