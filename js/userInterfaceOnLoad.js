@@ -5,7 +5,7 @@ window.onload = function (){
 let user = localStorage.getItem("aktiv");
 function loadSite(){
     
-    let angemeldeterUser = JSON.parse(localStorage.getItem(user + "+"));
+let angemeldeterUser = JSON.parse(localStorage.getItem(user + "+"));
     try{
         for(let i = 0; i<angemeldeterUser.length; i++){   
             createCardZiele(angemeldeterUser);
@@ -19,6 +19,7 @@ function loadSite(){
 let f = 0;
 let d = 0;
 let g = 0;
+
 function createCardZiele(angemeldeterUser){
 
     let divCard = document.getElementById("userZiele");
@@ -28,7 +29,7 @@ function createCardZiele(angemeldeterUser){
     let tabelle = document.createElement("table");
     tabelle.setAttribute("id", "tabelle" + d.toString());
     d++;
- 
+    let tabellenKörper = document.createElement("tbody");
     let tabellenKopf = document.createElement("thead");
     let trKopf = document.createElement("tr");
     let thHauptziel = document.createElement("th");
@@ -59,7 +60,7 @@ function createCardZiele(angemeldeterUser){
 
     for(let i=0; i<angemeldeterUser[f-1].unterziele.length;i++){
         
-        let tabellenKörper = document.createElement("tbody");
+        
         let trKörper = document.createElement("tr");
         
         let tdUnterziel = document.createElement("td");
@@ -70,7 +71,8 @@ function createCardZiele(angemeldeterUser){
 
         let tdButtonLöschen = document.createElement("td");
         let löschButtonUnterziel = document.createElement("button");
-        löschButtonUnterziel.innerHTML = "Löschen"
+        löschButtonUnterziel.setAttribute("id", "btnUnterzieleDelete");
+        löschButtonUnterziel.innerHTML = "Löschen";
                 
 
         tdButtonLöschen.appendChild(löschButtonUnterziel);
@@ -102,7 +104,7 @@ function createCardZiele(angemeldeterUser){
             let tdButtonLöschen = document.createElement("td");
             let löschButtonUnterziel = document.createElement("button");
             löschButtonUnterziel.innerHTML = "Löschen"
-                
+            löschButtonUnterziel.setAttribute("id", "btnUnterzieleDelete");  
 
             tdButtonLöschen.appendChild(löschButtonUnterziel);
             trKörper.appendChild(tdUnterziel);
@@ -154,5 +156,7 @@ function createCardZiele(angemeldeterUser){
             }     
         }
     }
+
+
     return false;
 }

@@ -39,6 +39,7 @@ function ModalneuesHauptzielHinzufügen(){
 let i = 0;
 let s = 0;
 let r = 0;
+let m = 0;
 
 //Fügt ein neues Hauptziel hinzu und erstellt die Tabelle
 function neuesHauptzielHinzufügen(){
@@ -51,7 +52,7 @@ function neuesHauptzielHinzufügen(){
     let divTabelle = document.createElement("div");
 
     let tabelle = document.createElement("table");
-    tabelle.setAttribute("id", "tabelle" + i.toString());
+    tabelle.setAttribute("id", "table" + i.toString());
     i++;
  
     
@@ -74,7 +75,8 @@ function neuesHauptzielHinzufügen(){
     
     let thButtonZiel = document.createElement("th");
     let buttonUnterziel = document.createElement("button");
-    buttonUnterziel.setAttribute("id", "btnUnterzielAdd");
+    buttonUnterziel.setAttribute("id", "btnUnterzielAdd" + m.toString());
+    m++;
     buttonUnterziel.innerHTML = "Unterziel anlegen";
 
     let thButtonLöschen = document.createElement("th");
@@ -96,6 +98,8 @@ function neuesHauptzielHinzufügen(){
 
     //Fügt ein neues Unterziel dem entsprechenden Hauptziel hinzu
     buttonUnterziel.onclick=function(){
+        let id = this.id;
+        console.log(id);
         
         let modal = document.getElementById("newUnterziel");
         modal.style.display = "block";
@@ -103,6 +107,7 @@ function neuesHauptzielHinzufügen(){
         document.getElementById("unterzielsubmit").onclick=function(){
             let tabellenKörper = document.createElement("tbody");
             let trKörper = document.createElement("tr");
+            
         
             let tdUnterziel = document.createElement("td");
             tdUnterziel.innerHTML = document.getElementById("inputFieldUnterziel").value;
@@ -113,9 +118,10 @@ function neuesHauptzielHinzufügen(){
             tdUnterzielErledigt.innerHTML = "Nicht Erledigt";
 
             let tdButtonLöschen = document.createElement("td");
+            
             let löschButtonUnterziel = document.createElement("button");
-            löschButtonUnterziel.innerHTML = "Löschen"
-                
+            löschButtonUnterziel.setAttribute("id", "test");
+            löschButtonUnterziel.innerHTML = "Löschen";                
 
             tdButtonLöschen.appendChild(löschButtonUnterziel);
             trKörper.appendChild(tdUnterziel);
@@ -123,31 +129,31 @@ function neuesHauptzielHinzufügen(){
             trKörper.appendChild(tdButtonLöschen);
             tabellenKörper.appendChild(trKörper);
             
-            console.log(document.getElementById("btnUnterzielAdd").parentNode.parentNode.parentNode.parentNode.id);
-            document.getElementById(buttonUnterziel.parentNode.parentNode.parentNode.parentNode.id).appendChild(tabellenKörper);
+            console.log(document.getElementById(id).parentNode.parentNode.parentNode.parentNode.id);
+            document.getElementById(document.getElementById(id).parentNode.parentNode.parentNode.parentNode.id).appendChild(tabellenKörper);
 
             
             let modalNewUnterziel = document.getElementById("newUnterziel");
             modalNewUnterziel.style.display = "none";
             
             let angemeldeterUser2 = JSON.parse(localStorage.getItem(user + "+"));
-            for(let r=0; r<i; r++){
-                for(let l=0; l<i;l++){
-                    if(document.getElementById(buttonUnterziel.parentNode.parentNode.parentNode.parentNode.id).getElementsByTagName("thead")[0].getElementsByTagName("tr")[0].getElementsByTagName("th")[0].innerHTML == angemeldeterUser2[l].hauptziel){
-                        angemeldeterUser2[l].unterziele.push(document.getElementById("inputFieldUnterziel").value);
-                        localStorage.setItem(user + "+", JSON.stringify(angemeldeterUser2));
-                        return;
-                    }
-                }     
-            }
-            return false;
+           
+            for(let l=0; l<document.getElementsByTagName("table").length;l++){
+                if(document.getElementById(document.getElementById(id).parentNode.parentNode.parentNode.parentNode.id).getElementsByTagName("thead")[0].getElementsByTagName("tr")[0].getElementsByTagName("th")[0].innerHTML == angemeldeterUser2[l].hauptziel){
+                    angemeldeterUser2[l].unterziele.push(document.getElementById("inputFieldUnterziel").value);
+                    localStorage.setItem(user + "+", JSON.stringify(angemeldeterUser2));
+                    return;
+                }
+            }     
+           
+        return false;
         }
     }
 
     löschButtonHauptziel.onclick=function(){
         let angemeldeterUser3 = JSON.parse(localStorage.getItem(user + "+"));
         let id = this.id.slice(18);
-        let element = document.getElementById("tabelle"+id);
+        let element = document.getElementById("table"+id);
         console.log(element);
         console.log(angemeldeterUser3);
         for(let r=0; r<i; r++){
@@ -166,5 +172,6 @@ function neuesHauptzielHinzufügen(){
             }     
         }
     }
+    
     return false;
 }
