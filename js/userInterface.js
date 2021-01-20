@@ -37,6 +37,7 @@ function ModalneuesHauptzielHinzufügen(){
 
 
 let i = 0;
+let s = 0;
 let r = 0;
 
 //Fügt ein neues Hauptziel hinzu und erstellt die Tabelle
@@ -78,6 +79,8 @@ function neuesHauptzielHinzufügen(){
 
     let thButtonLöschen = document.createElement("th");
     let löschButtonHauptziel = document.createElement("button");
+    löschButtonHauptziel.setAttribute("id", "btnHauptzielDelete" + s.toString());
+    s++;
     löschButtonHauptziel.innerHTML = "Löschen"
 
     thButtonLöschen.appendChild(löschButtonHauptziel);
@@ -104,16 +107,7 @@ function neuesHauptzielHinzufügen(){
             let tdUnterziel = document.createElement("td");
             tdUnterziel.innerHTML = document.getElementById("inputFieldUnterziel").value;
             
-            let angemeldeterUser2 = JSON.parse(localStorage.getItem(user + "+"));
-            for(let r=0; r<i; r++){
-                for(let l=0; l<i;l++){
-                    if(document.getElementById(buttonUnterziel.parentNode.parentNode.parentNode.parentNode.id).getElementsByTagName("thead")[0].getElementsByTagName("tr")[0].getElementsByTagName("th")[0].innerHTML == angemeldeterUser2[l].hauptziel){
-                        angemeldeterUser2[l].unterziele.push(document.getElementById("inputFieldUnterziel").value);
-                        localStorage.setItem(user + "+", JSON.stringify(angemeldeterUser2));
-                        return;
-                    }
-                }     
-            }
+            
 
             let tdUnterzielErledigt = document.createElement("td");
             tdUnterzielErledigt.innerHTML = "Nicht Erledigt";
@@ -136,7 +130,40 @@ function neuesHauptzielHinzufügen(){
             let modalNewUnterziel = document.getElementById("newUnterziel");
             modalNewUnterziel.style.display = "none";
             
+            let angemeldeterUser2 = JSON.parse(localStorage.getItem(user + "+"));
+            for(let r=0; r<i; r++){
+                for(let l=0; l<i;l++){
+                    if(document.getElementById(buttonUnterziel.parentNode.parentNode.parentNode.parentNode.id).getElementsByTagName("thead")[0].getElementsByTagName("tr")[0].getElementsByTagName("th")[0].innerHTML == angemeldeterUser2[l].hauptziel){
+                        angemeldeterUser2[l].unterziele.push(document.getElementById("inputFieldUnterziel").value);
+                        localStorage.setItem(user + "+", JSON.stringify(angemeldeterUser2));
+                        return;
+                    }
+                }     
+            }
             return false;
+        }
+    }
+
+    löschButtonHauptziel.onclick=function(){
+        let angemeldeterUser3 = JSON.parse(localStorage.getItem(user + "+"));
+        let id = this.id.slice(18);
+        let element = document.getElementById("tabelle"+id);
+        console.log(element);
+        console.log(angemeldeterUser3);
+        for(let r=0; r<i; r++){
+            for(let l=0; l<i;l++){
+                if(document.getElementById(löschButtonHauptziel.parentNode.parentNode.parentNode.parentNode.id).getElementsByTagName("thead")[0].getElementsByTagName("tr")[0].getElementsByTagName("th")[0].innerHTML == angemeldeterUser3[l].hauptziel){
+                    
+                    console.log(document.getElementById(löschButtonHauptziel.parentNode.parentNode.parentNode.parentNode.id).getElementsByTagName("thead")[0].getElementsByTagName("tr")[0].getElementsByTagName("th")[0].innerHTML);
+                    console.log(angemeldeterUser3[l].hauptziel);
+                    console.log(l);
+                    angemeldeterUser3.splice(l,1);
+                    console.log(angemeldeterUser3);
+                    localStorage.setItem(user + "+", JSON.stringify(angemeldeterUser3));
+                    element.remove();
+                    return;
+                }
+            }     
         }
     }
     return false;

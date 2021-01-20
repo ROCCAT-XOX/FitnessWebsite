@@ -2,9 +2,9 @@
 window.onload = function (){
     loadSite()
 }
-
+let user = localStorage.getItem("aktiv");
 function loadSite(){
-    let user = localStorage.getItem("aktiv");
+    
     let angemeldeterUser = JSON.parse(localStorage.getItem(user + "+"));
     try{
         for(let i = 0; i<angemeldeterUser.length; i++){   
@@ -18,6 +18,7 @@ function loadSite(){
 
 let f = 0;
 let d = 0;
+let g = 0;
 function createCardZiele(angemeldeterUser){
 
     let divCard = document.getElementById("userZiele");
@@ -41,6 +42,8 @@ function createCardZiele(angemeldeterUser){
 
     let thButtonLöschen = document.createElement("th");
     let löschButtonHauptziel = document.createElement("button");
+    löschButtonHauptziel.setAttribute("id", "btnHauptzielDelete"  + g.toString());
+    g++;
     löschButtonHauptziel.innerHTML = "Löschen"
 
     thButtonLöschen.appendChild(löschButtonHauptziel);
@@ -54,8 +57,6 @@ function createCardZiele(angemeldeterUser){
     divTabelle.appendChild(tabelle);
     divCard.appendChild(divTabelle);
 
-    console.log(angemeldeterUser[0].unterziele[0]);
-    console.log(angemeldeterUser[0].unterziele[1]);
     for(let i=0; i<angemeldeterUser[f-1].unterziele.length;i++){
         
         let tabellenKörper = document.createElement("tbody");
@@ -115,6 +116,7 @@ function createCardZiele(angemeldeterUser){
             
             let modalNewUnterziel = document.getElementById("newUnterziel");
             modalNewUnterziel.style.display = "none";
+            
             let user = localStorage.getItem("aktiv");
             let angemeldeterUser2 = JSON.parse(localStorage.getItem(user + "+"));
             for(let r=0; r<d; r++){
@@ -128,6 +130,28 @@ function createCardZiele(angemeldeterUser){
                 }     
             }
             return false;
+        }
+    }
+    löschButtonHauptziel.onclick=function(){
+        let angemeldeterUser3 = JSON.parse(localStorage.getItem(user + "+"));
+        let id = this.id.slice(18);
+        let element = document.getElementById("tabelle"+id);
+        console.log(element);
+        console.log(angemeldeterUser3);
+        for(let r=0; r<d; r++){
+            for(let l=0; l<d;l++){
+                if(document.getElementById(löschButtonHauptziel.parentNode.parentNode.parentNode.parentNode.id).getElementsByTagName("thead")[0].getElementsByTagName("tr")[0].getElementsByTagName("th")[0].innerHTML == angemeldeterUser3[l].hauptziel){
+                    
+                    console.log(document.getElementById(löschButtonHauptziel.parentNode.parentNode.parentNode.parentNode.id).getElementsByTagName("thead")[0].getElementsByTagName("tr")[0].getElementsByTagName("th")[0].innerHTML);
+                    console.log(angemeldeterUser3[l].hauptziel);
+                    console.log(l);
+                    angemeldeterUser3.splice(l,1);
+                    console.log(angemeldeterUser3);
+                    localStorage.setItem(user + "+", JSON.stringify(angemeldeterUser3));
+                    element.remove();
+                    return;
+                }
+            }     
         }
     }
     return false;
