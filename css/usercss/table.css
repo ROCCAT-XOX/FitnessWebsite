@@ -2,30 +2,10 @@ table{
     border-spacing: 30px;
     margin: auto; 
     text-align: center;
+    min-width: 500px;
     width: fit-content;
     vertical-align: text-top;
-    
+    border: 1px solid #555555;
+    border-radius: 6px;;
 }
-.headt-title{
-    font-size: 25px;
-}
-label{
-    font-size: 20px;
-}
-
-.columns{
-    width: 130px;
-    
-    
-}
-
-
-
-.targets{
-    overflow-x: auto;
-    overflow-y: auto;
-    width: auto;
-    min-height: 300px;
-    height: fit-content;
-    }
 
