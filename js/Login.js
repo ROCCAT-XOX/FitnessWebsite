@@ -2,7 +2,7 @@
 
 let trainer = [
     {
-        ID: "1",
+        ID: 1,
         Vorname: "Chris",
         Nachname: "Hemsworth",
         Email: "chris.hemsworth@gmail.com",
@@ -12,7 +12,7 @@ let trainer = [
         Rolle: "Trainer und Therapeut"
     },
     {
-        ID: "2",
+        ID: 2,
         Vorname: "Chris",
         Nachname: "Evans",
         Email: "chris.evans@gmail.com",
@@ -22,7 +22,7 @@ let trainer = [
         Rolle: "Trainer"
     },
     {
-        ID: "3",
+        ID: 3,
         Vorname: "Dwayne",
         Nachname: "Johnson",
         Email: "dwayne.johnson@gmail.com",
@@ -32,7 +32,7 @@ let trainer = [
         Rolle: "Trainer und CEO"
     },
     {
-        ID: "4",
+        ID: 4,
         Vorname: "Gal",
         Nachname: "Gadot",
         Email: "gal.gadot@gmail.com",
@@ -42,7 +42,7 @@ let trainer = [
         Rolle: "Trainerin"
     },
     {
-        ID: "5",
+        ID: 5,
         Vorname: "Mrs",
         Nachname: "Bella",
         Email: "mrs.bella@gmail.com",
@@ -52,7 +52,7 @@ let trainer = [
         Rolle: "Trainerin"
     },
     {
-        ID: "6",
+        ID: 6,
         Vorname: "Pamela",
         Nachname: "Reif",
         Email: "pamela.reif@gmail.com",

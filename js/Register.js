@@ -20,7 +20,8 @@ function newKunde(){
         Hausnummer: document.getElementById("housenumber").value,
         Beschreibung: "",
         Ziel: "",
-        Fortschritt: 0
+        Fortschritt: 0,
+        Trainer: Math.round(Math.random() * (6 - 1)) + 1
     }
 
 

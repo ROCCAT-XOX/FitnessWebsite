@@ -18,7 +18,8 @@ function loadSite(){
         }
         catch{
             console.log("Error");
-        } 
+        }
+        createCardTrainerOnLoad(); 
         createCardFortschrittOnLoad();
 }
 
@@ -336,5 +337,156 @@ function renderIdBar(){
 	  }
 	
 	let ldBar = new window.ldBar("#ldBar_"+idBarId, config);
+}
+
+/*----------------------Card Personaltrainer------------------------*/
+
+let trainer = [
+    {
+        ID: 1,
+        Vorname: "Chris",
+        Nachname: "Hemsworth",
+        Email: "chris.hemsworth@gmail.com",
+        Passwort: "thor",
+        Bild: "chrisHemsworth.jpg",
+        Spezialisierung: "Krafttraining",
+        Rolle: "Trainer und Therapeut",
+        Telefonnummer: "+49 15906837592",
+        PLZ: "68161",
+        Ort: "Mannheim/Schwetzingerstadt",
+        Strasse: "Schlossallee",
+        Hausnummer: "134"
+    },
+    {
+        ID: 2,
+        Vorname: "Chris",
+        Nachname: "Evans",
+        Email: "chris.evans@gmail.com",
+        Passwort: "captainamerica",
+        Bild: "chris evans.jpg",
+        Spezialisierung: "Schwimmmen",
+        Rolle: "Trainer",
+        Telefonnummer: "+49 17664291805",
+        PLZ: "68159",
+        Ort: "Mannheim/Innenstadt",
+        Strasse: "Q3",
+        Hausnummer: "12"
+    },
+    {
+        ID: 3,
+        Vorname: "Dwayne",
+        Nachname: "Johnson",
+        Email: "dwayne.johnson@gmail.com",
+        Passwort: "therock",
+        Bild: "dwayneJohnson.jpg",
+        Spezialisierung: "Bodybuilding",
+        Rolle: "Trainer und CEO",
+        Telefonnummer: "+49 15908249328",
+        PLZ: "68259",
+        Ort: "Mannheim/Feudenheim",
+        Strasse: "Parkstraße",
+        Hausnummer: "45"
+    },
+    {
+        ID: 4,
+        Vorname: "Gal",
+        Nachname: "Gadot",
+        Email: "gal.gadot@gmail.com",
+        Passwort: "wonderwoman",
+        Bild: "gal Gadot.jpg",
+        Spezialisierung: "Ernährung",
+        Rolle: "Trainerin",
+        Telefonnummer: "+49 17635794520",
+        PLZ: "68229",
+        Ort: "Mannheim/Friedrichsfeld",
+        Strasse: "Karolingerstraße",
+        Hausnummer: "66"
+    },
+    {
+        ID: 5,
+        Vorname: "Mrs",
+        Nachname: "Bella",
+        Email: "mrs.bella@gmail.com",
+        Passwort: "youtube",
+        Bild: "mrsbella.jpg",
+        Spezialisierung: "Crossfit",
+        Rolle: "Trainerin",
+        Telefonnummer: "+49 17601587456",
+        PLZ: "68309",
+        Ort: "Mannheim/Käferta",
+        Strasse: "Opernplatz",
+        Hausnummer: "34"
+    },
+    {
+        ID: 6,
+        Vorname: "Pamela",
+        Nachname: "Reif",
+        Email: "pamela.reif@gmail.com",
+        Passwort: "fitness",
+        Bild: "pamelaReif.jpg",
+        Spezialisierung: "Bauch, Beine, Po",
+        Rolle: "Trainerin und CEO",
+        Telefonnummer: "+49 15905480065",
+        PLZ: "68163",
+        Ort: "Mannheim/Lindenhof",
+        Strasse: "Burgstraße",
+        Hausnummer: "1"
+    }
+]
+
+
+//Erstellt die Personaltrainer Card, lädt abhängig von dem Trainer, den man zugewiesen hat, die entsprechenden Infos über den Trainer
+function createCardTrainerOnLoad(){
+    let myTrainer = new Object();
+    let kunde = JSON.parse(localStorage.getItem(user));
+    for(let i = 0; i<trainer.length;i++){
+        if(trainer[i].ID == kunde.Trainer){
+            myTrainer.Bild = trainer[i].Bild;
+            myTrainer.Vorname = trainer[i].Vorname;
+            myTrainer.Nachname = trainer[i].Nachname;
+            myTrainer.Email = trainer[i].Email;
+            myTrainer.Spezialisierung = trainer[i].Spezialisierung;
+            myTrainer.Rolle = trainer[i].Rolle;
+            myTrainer.Telefonnummer = trainer[i].Telefonnummer;
+            myTrainer.PLZ = trainer[i].PLZ;
+            myTrainer.Ort = trainer[i].Ort;
+            myTrainer.Strasse = trainer[i].Strasse;
+            myTrainer.Hausnummer = trainer[i].Hausnummer;
+
+            
+        }
+    }
+    console.log(myTrainer);
+    /*Trainer Picture*/
+    let img = document.createElement("img");
+    img.className = "picture";
+    img.src = "images/" + myTrainer.Bild;
+    img.style = "width: 100%; height: 100%;";
+    document.getElementById("bild").appendChild(img);
+
+    /*Name und Kategorie*/
+    let name = document.createElement("h2");
+    name.innerHTML = myTrainer.Vorname + " " + myTrainer.Nachname;
+    let rolle = document.createElement("h3");
+    rolle.className = "kategorie";
+    rolle.innerHTML = myTrainer.Rolle;
+
+    document.getElementById("namekategorie").appendChild(name);
+    document.getElementById("namekategorie").appendChild(rolle);
+
+    /*Infos*/
+    let pAdresse= document.createElement("p");
+    pAdresse.innerHTML = myTrainer.PLZ + "<br>" + myTrainer.Ort + "<br>" + myTrainer.Strasse + " " + myTrainer.Hausnummer;
+    let pEmail = document.createElement("p");
+    pEmail.innerHTML = "Email: " + myTrainer.Email;
+    let pTelefonnummer = document.createElement("p");
+    pTelefonnummer.innerHTML = "Telefonnummer: "  + myTrainer.Telefonnummer;
+    let pSpezialisierung = document.createElement("p");
+    pSpezialisierung.innerHTML = "Spezialisierung: " + myTrainer.Spezialisierung;
+
+    document.getElementById("infos").appendChild(pAdresse);
+    document.getElementById("infos").appendChild(pEmail);
+    document.getElementById("infos").appendChild(pTelefonnummer);
+    document.getElementById("infos").appendChild(pSpezialisierung);
 }
 

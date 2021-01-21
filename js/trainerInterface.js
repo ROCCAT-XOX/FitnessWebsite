@@ -35,7 +35,8 @@ function addNewKunde(){
         Passwort: document.getElementById("password").value,
         Beschreibung: document.getElementById("beschreibung").value,
         Ziel: document.getElementById("ziele").value,
-        Fortschritt: "0"
+        Fortschritt: "0",
+        Trainer: Math.round(Math.random() * (6 - 1)) + 1
     }
 
     loadIntoStorage(kunde);
