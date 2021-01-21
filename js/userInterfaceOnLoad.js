@@ -318,8 +318,8 @@ function createCardFortschrittOnLoad(){
     divLB.id = "ldBar_"+idBarId;
     divLB.className = "ldBar";
     divLB.className =   "label-center";
-    divLB.style.width = "100%";
-    divLB.style.height = "50%";
+    divLB.style.width = "40%";
+    divLB.style.height = "40%";
     divFortschritt.appendChild(divLB);
     renderIdBar();
 }
@@ -328,8 +328,8 @@ function createCardFortschrittOnLoad(){
 //die loadbar bekommt die entsprechenden Parameter gesetzt
 function renderIdBar(){
 	let config={
-	    "stroke": '#f00',
-	    "stroke-width": 10,
+	    "stroke": '#08f',
+	    "stroke-width": 3,
         "preset": "circle",
         "data-transition-in":"100",
 	    "value": fortschrittRounded //kunde.Fortschritt
