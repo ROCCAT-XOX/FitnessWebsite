@@ -47,10 +47,12 @@ function createCardZiele(angemeldeterUser){
     let thButtonZiel = document.createElement("th");
     let buttonUnterziel = document.createElement("button");
     buttonUnterziel.setAttribute("id", "btnUnterzielAdd");
+    buttonUnterziel.className = "TableBtnUndertarget";
     buttonUnterziel.innerHTML = "Unterziel anlegen";
 
     let thButtonLöschen = document.createElement("th");
     let löschButtonHauptziel = document.createElement("button");
+    löschButtonHauptziel.className = "TableBtnDelete";
     löschButtonHauptziel.setAttribute("id", "btnHauptzielDelete"  + g.toString());
     g++;
     löschButtonHauptziel.innerHTML = "Löschen"
@@ -66,6 +68,8 @@ function createCardZiele(angemeldeterUser){
     divTabelle.appendChild(tabelle);
     divCard.appendChild(divTabelle);
 
+    
+
     //in dieser for-schleife werden einem Hauptziel seine Unterziele hinzugefügt und in den Tabellenkörper gepackt, diese muss so oft durchlaufen werden, wie es Unterziele in dem betreffenden Hauptziel gibt
     for(let i=0; i<angemeldeterUser[f-1].unterziele.length;i++){
         
@@ -80,18 +84,18 @@ function createCardZiele(angemeldeterUser){
 
         let tdButtonLöschen = document.createElement("td");
         let löschButtonUnterziel = document.createElement("button");
+        löschButtonUnterziel.className = "TableBtnDelete";
         löschButtonUnterziel.setAttribute("id", "btnUnterzieleDelete" + n.toString());
         löschButtonUnterziel.innerHTML = "Löschen";
         n++;    
         
         //hier kann mit dem Lösch Button der Unterziele, die einzelnen Unterziele gelöscht werden; diese Funktion muss nur einmal implementiert werden, da danach die Seite automatisch reloaded
         löschButtonUnterziel.onclick=function(){  
-            try{
+           
                 let angemeldeterUser4 = JSON.parse(localStorage.getItem(user + "+"));
                 let id = this.id;
                 console.log(id);
                 console.log(document.getElementById(id).parentNode.parentNode.getElementsByTagName("td")[0].innerHTML); //=Unterzielname
-                console.log(angemeldeterUser4[i].unterziele[r]);
                 //es werden zwei for schleifen benötigt, um durch jedes Hauptziel zu iterieren und in jedem Hauptziel nochmal durch die Unterziele
                 for(let i=0;i<angemeldeterUser4.length;i++){
                     for(let r = 0;r<angemeldeterUser4[i].unterziele.length;r++){
@@ -101,13 +105,12 @@ function createCardZiele(angemeldeterUser){
                             angemeldeterUser4[i].unterziele.splice(r,1);
                             localStorage.setItem(user + "+", JSON.stringify(angemeldeterUser4));
                             document.getElementById(id).parentNode.parentNode.remove();
+                            return;
                         }
                     }
                 }
-            }
-            catch{
-                console.log("Element wurde gelöscht");
-            }
+            
+           
             
         }
 
@@ -141,6 +144,7 @@ function createCardZiele(angemeldeterUser){
 
             let tdButtonLöschen = document.createElement("td");
             let löschButtonUnterziel = document.createElement("button");
+            löschButtonUnterziel.className = "TableBtnDelete";
             löschButtonUnterziel.innerHTML = "Löschen"
 
 
@@ -184,7 +188,7 @@ function createCardZiele(angemeldeterUser){
         console.log(element);
         console.log(angemeldeterUser3);
         //Es werden die Hauptziele im localStorage mit dem von dem Button zugehörigen Hauptziel verglichen und wenn sie übereinstimmen aus dem localStorage entfernt
-        for(let l=0; l<d;l++){
+        for(let l=0; l<angemeldeterUser3.length;l++){
             if(document.getElementById(löschButtonHauptziel.parentNode.parentNode.parentNode.parentNode.id).getElementsByTagName("thead")[0].getElementsByTagName("tr")[0].getElementsByTagName("th")[0].innerHTML == angemeldeterUser3[l].hauptziel){
                     
                 console.log(document.getElementById(löschButtonHauptziel.parentNode.parentNode.parentNode.parentNode.id).getElementsByTagName("thead")[0].getElementsByTagName("tr")[0].getElementsByTagName("th")[0].innerHTML);
@@ -199,20 +203,8 @@ function createCardZiele(angemeldeterUser){
             }
         }     
     }
-
-
     return false;
 }
 
-/*
-function toggleRows(){
-    let rows = document.getElementById("tabelle0").getElementsByTagName('tbody')[0].getElementsByTagName('tr');
-    for (i = 0; i < rows.length; i++) {
-        rows[i].addEventListener('click', function() {
-            this.classList.toggle('markiert');
-        });
-}
-}
-function checkFortschritt(){
 
-}*/
+

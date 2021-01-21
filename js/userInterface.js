@@ -79,12 +79,14 @@ function neuesHauptzielHinzufügen(){
     
     let thButtonZiel = document.createElement("th");
     let buttonUnterziel = document.createElement("button");
+    buttonUnterziel.className = "TableBtnUndertarget";
     buttonUnterziel.setAttribute("id", "btnUnterzielAdd" + m.toString());
     m++;
     buttonUnterziel.innerHTML = "Unterziel anlegen";
 
     let thButtonLöschen = document.createElement("th");
     let löschButtonHauptziel = document.createElement("button");
+    löschButtonHauptziel.className = "TableBtnDelete";
     löschButtonHauptziel.setAttribute("id", "btnHauptzielDelete" + s.toString());
     s++;
     löschButtonHauptziel.innerHTML = "Löschen"
@@ -126,6 +128,7 @@ function neuesHauptzielHinzufügen(){
             let tdButtonLöschen = document.createElement("td");
             
             let löschButtonUnterziel = document.createElement("button");
+            löschButtonUnterziel.className = "TableBtnDelete";
             löschButtonUnterziel.setAttribute("id", "test");
             löschButtonUnterziel.innerHTML = "Löschen";                
 
@@ -166,7 +169,7 @@ function neuesHauptzielHinzufügen(){
         console.log(angemeldeterUser3);
         
         //Es werden die Hauptziele im localStorage mit dem von dem Button zugehörigen Hauptziel verglichen und wenn sie übereinstimmen aus dem localStorage entfernt
-        for(let l=0; l<i;l++){
+        for(let l=0; l<angemeldeterUser3.length;l++){
             if(document.getElementById(löschButtonHauptziel.parentNode.parentNode.parentNode.parentNode.id).getElementsByTagName("thead")[0].getElementsByTagName("tr")[0].getElementsByTagName("th")[0].innerHTML == angemeldeterUser3[l].hauptziel){
                     
                 console.log(document.getElementById(löschButtonHauptziel.parentNode.parentNode.parentNode.parentNode.id).getElementsByTagName("thead")[0].getElementsByTagName("tr")[0].getElementsByTagName("th")[0].innerHTML);
