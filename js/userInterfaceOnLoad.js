@@ -279,21 +279,25 @@ function createCardZiele(angemeldeterUser){
     return false;
 }
 
+//hier wird der Fortschritt des Users berechnet jedes Unter-und Hauptziel zählen einzeln fürs sich, Rechnung: Anzahl erledigte Ziele/(Anzahl Hauptziele+Anzahl Unterziele)
 let fortschrittRounded;
 function checkFortschritt(){
     let angemeldeterUser5 = JSON.parse(localStorage.getItem(user + "+"));
-    let anzahlZiele = angemeldeterUser5.length; //das sind bereits die anzah der hauptziele
-    
+    let anzahlZiele = angemeldeterUser5.length; //das sind bereits die anzahl der hauptziele
+
+    //Hier wird die Anzahl der Ziele berechnet, indem auf die Länge des Arrays (enstspricht #Hauptziele), die Länge jedes einzelnen Unterzielarrays der Hauptziele darauf addiert werden
     for(let i = 0; i<angemeldeterUser5.length; i++){
         anzahlZiele += angemeldeterUser5[i].unterziele.length;
     }
     console.log(anzahlZiele);
     
+    //Hier wird durch die Hauptziele iteriert und überprüft, ob diese erledigt sind oder nicht und dementsprechend den Counter erhöht
     let anzahlErledigteZiele = 0;
     for(let i = 0;i<angemeldeterUser5.length;i++){
         if(angemeldeterUser5[i].erledigt == 1){
             anzahlErledigteZiele++;
         }
+        //Hier wird durch die Unterziele der einzelenen Hauptziele iteriert und überprüft, ob diese bereits eredigt sind und dementsprechend der Counter aktualisiert
         for(let r = 0; r<angemeldeterUser5[i].unterziele.length; r++){
             if(angemeldeterUser5[i].unterziele[r].erledigt == 1){
                 anzahlErledigteZiele++;
@@ -302,16 +306,21 @@ function checkFortschritt(){
     }
     
 
+    //Hier wird der Fortschritt endgültig in % ausgerechnet und auf 2 Nachkommastellen gerundet
     let fortschritt = (anzahlErledigteZiele/anzahlZiele) * 100;
     fortschrittRounded = fortschritt.toFixed(2);
     
-    
+    if(angemeldeterUser5.length = 0)
+    {
+        fortschrittRounded = 0;
+    }
     let kunde = JSON.parse(localStorage.getItem(user));
   
     kunde.Fortschritt = fortschrittRounded;
     localStorage.setItem(user, JSON.stringify(kunde));
 }
 
+//Hier wird die loadBar erstellt
 function createCardFortschrittOnLoad(){
     ++idBarId;
     let divFortschritt = document.getElementById("progressbar");
@@ -333,7 +342,7 @@ function renderIdBar(){
 	    "stroke-width": 3,
         "preset": "circle",
         "data-transition-in":"100",
-	    "value": fortschrittRounded //kunde.Fortschritt
+	    "value": fortschrittRounded
 	  }
 	
 	let ldBar = new window.ldBar("#ldBar_"+idBarId, config);
@@ -341,6 +350,8 @@ function renderIdBar(){
 
 /*----------------------Card Personaltrainer------------------------*/
 
+
+//Trainer sind hart codiert
 let trainer = [
     {
         ID: 1,
@@ -439,6 +450,7 @@ let trainer = [
 function createCardTrainerOnLoad(){
     let myTrainer = new Object();
     let kunde = JSON.parse(localStorage.getItem(user));
+    //hier wird herausgefiltert, welcher Trainer dem User zugewiesen ist und die Daten dieses Trainers in myTrainer gespeichert
     for(let i = 0; i<trainer.length;i++){
         if(trainer[i].ID == kunde.Trainer){
             myTrainer.Bild = trainer[i].Bild;
