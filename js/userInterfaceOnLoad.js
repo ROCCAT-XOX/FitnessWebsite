@@ -389,7 +389,7 @@ let trainer = [
         Nachname: "Johnson",
         Email: "dwayne.johnson@gmail.com",
         Passwort: "therock",
-        Bild: "dwayneJohnson.jpg",
+        Bild: "dwayneJohnsan.jpg",
         Spezialisierung: "Bodybuilding",
         Rolle: "Trainer und CEO",
         Telefonnummer: "+49 15908249328",
