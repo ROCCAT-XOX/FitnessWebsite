@@ -13,13 +13,13 @@ function loadSite(){
             for(let i = 0; i<angemeldeterUser.length; i++){   
                 createCardZiele(angemeldeterUser);
                 checkFortschritt();
-                createCardFortschrittOnLoad();
                 
             } 
         }
         catch{
             console.log("Error");
         } 
+        createCardFortschrittOnLoad();
 }
 
 //Hilfsvariabeln, um eineigen Elementen unique id`s zuweisen zu können
@@ -278,7 +278,7 @@ function createCardZiele(angemeldeterUser){
     return false;
 }
 
-
+let fortschrittRounded;
 function checkFortschritt(){
     let angemeldeterUser5 = JSON.parse(localStorage.getItem(user + "+"));
     let anzahlZiele = angemeldeterUser5.length; //das sind bereits die anzah der hauptziele
@@ -302,7 +302,7 @@ function checkFortschritt(){
     
 
     let fortschritt = (anzahlErledigteZiele/anzahlZiele) * 100;
-    let fortschrittRounded = fortschritt.toFixed(2);
+    fortschrittRounded = fortschritt.toFixed(2);
     
     
     let kunde = JSON.parse(localStorage.getItem(user));
@@ -332,7 +332,7 @@ function renderIdBar(){
 	    "stroke-width": 10,
         "preset": "circle",
         "data-transition-in":"100",
-	    "value": kunde.Fortschritt //kunde.Fortschritt
+	    "value": fortschrittRounded //kunde.Fortschritt
 	  }
 	
 	let ldBar = new window.ldBar("#ldBar_"+idBarId, config);

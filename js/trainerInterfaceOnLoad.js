@@ -68,6 +68,10 @@ function createCardOnLoad(){
     let divAußenCard = document.createElement("div");
     divAußenCard.className = "row";
     divAußenCard.setAttribute("id", "divAußenCard" + userEmail);
+    /*divAußenCard.onclick=function(){
+        localStorage.setItem("aktiv", divAußenCard.id.slice(12));
+        window.location ="userInterface.html";
+    }*/
     let divCard = document.createElement("div");
     divCard.className = "card";
     

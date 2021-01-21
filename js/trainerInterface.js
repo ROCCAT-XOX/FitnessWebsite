@@ -63,6 +63,7 @@ function createCard(){
     let divAußenCard = document.createElement("div");
     divAußenCard.className = "row";
     divAußenCard.setAttribute("id", "divAußenCard" + document.getElementById("KundeEmail").value);
+    
     let divCard = document.createElement("div");
     divCard.className = "card";
     
