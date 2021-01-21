@@ -56,6 +56,7 @@ function neuesHauptzielHinzufügen(){
 
     let tabelle = document.createElement("table");
     tabelle.setAttribute("id", "table" + i.toString());
+    
     i++;
  
     
@@ -63,6 +64,7 @@ function neuesHauptzielHinzufügen(){
     let trKopf = document.createElement("tr");
     let thHauptziel = document.createElement("th");
     thHauptziel.innerHTML = document.getElementById("inputFieldHauptziel").value;
+
     
     //Hauptziel wird in den localStorage des eingeloggten Users gespeichert
     let user = localStorage.getItem("aktiv");
@@ -71,6 +73,7 @@ function neuesHauptzielHinzufügen(){
     //Ziele werden als Objekt im localStorage gespeichert
     let ziele = new Object();
     ziele.hauptziel = document.getElementById("inputFieldHauptziel").value;
+    ziele.erledigt = 0;
     ziele.unterziele = [];
     angemeldeterUser.push(ziele);
     console.log(angemeldeterUser);
@@ -149,7 +152,10 @@ function neuesHauptzielHinzufügen(){
            //Zusäzlich wird das Unterziel auch in den localStorage gespeichert; dafür wird der Name des Hauptziels in der Tabelle mit denen im Localstorage verglichen und wenn es übereinstimmt, in das entsprechende Unterziele Array hinzugefügt
             for(let l=0; l<document.getElementsByTagName("table").length;l++){
                 if(document.getElementById(document.getElementById(id).parentNode.parentNode.parentNode.parentNode.id).getElementsByTagName("thead")[0].getElementsByTagName("tr")[0].getElementsByTagName("th")[0].innerHTML == angemeldeterUser2[l].hauptziel){
-                    angemeldeterUser2[l].unterziele.push(document.getElementById("inputFieldUnterziel").value);
+                    let unterziel = new Object();
+                    unterziel.name = document.getElementById("inputFieldUnterziel").value;
+                    unterziel.erledigt = 0;
+                    angemeldeterUser2[l].unterziele.push(unterziel);
                     localStorage.setItem(user + "+", JSON.stringify(angemeldeterUser2));
                     return;
                 }
@@ -185,6 +191,5 @@ function neuesHauptzielHinzufügen(){
         }     
        
     }
-    
     return false;
 }

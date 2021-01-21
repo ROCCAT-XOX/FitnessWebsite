@@ -9,6 +9,6 @@ table{
     border-radius: 6px;;
 }
 
-tr.markiert {
+table.markiert {
     background-color: lime;
   }

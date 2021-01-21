@@ -35,7 +35,7 @@ function addNewKunde(){
         Passwort: document.getElementById("password").value,
         Beschreibung: document.getElementById("beschreibung").value,
         Ziel: document.getElementById("ziele").value,
-        Fortschritt: "50"
+        Fortschritt: "0"
     }
 
     loadIntoStorage(kunde);
@@ -89,7 +89,7 @@ function renderIdBar(){
 	    "stroke-width": 10,
         "preset": "energy",
         "data-transition-in":"100",
-	    "value": "50" //kunde.Fortschritt
+	    "value": kunde.Fortschritt //kunde.Fortschritt
 	  }
 	
 	let ldBar = new window.ldBar("#ldBar_"+idBarId, config);
