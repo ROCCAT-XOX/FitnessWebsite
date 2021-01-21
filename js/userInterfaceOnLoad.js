@@ -1,3 +1,6 @@
+//test
+
+
 //wenn die Seite neu geladen wird, soll die Funktion loadSite() aufgerufen werden
 window.onload = function (){
     loadSite()
@@ -200,3 +203,16 @@ function createCardZiele(angemeldeterUser){
 
     return false;
 }
+
+/*
+function toggleRows(){
+    let rows = document.getElementById("tabelle0").getElementsByTagName('tbody')[0].getElementsByTagName('tr');
+    for (i = 0; i < rows.length; i++) {
+        rows[i].addEventListener('click', function() {
+            this.classList.toggle('markiert');
+        });
+}
+}
+function checkFortschritt(){
+
+}*/
