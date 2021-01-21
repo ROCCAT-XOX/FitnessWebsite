@@ -14,7 +14,7 @@ function loadSite(){
                 createCardZiele(angemeldeterUser);
                 checkFortschritt();
                 createCardFortschrittOnLoad();
-                renderIdBar();
+                
             } 
         }
         catch{
@@ -321,6 +321,7 @@ function createCardFortschrittOnLoad(){
     divLB.style.width = "100%";
     divLB.style.height = "50%";
     divFortschritt.appendChild(divLB);
+    renderIdBar();
 }
 
 
