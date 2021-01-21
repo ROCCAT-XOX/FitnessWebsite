@@ -6,42 +6,60 @@ let trainer = [
         Vorname: "Chris",
         Nachname: "Hemsworth",
         Email: "chris.hemsworth@gmail.com",
-        Passwort: "thor"
+        Passwort: "thor",
+        Bild: "chrisHemsworth.jpg",
+        Spezialisierung: "Krafttraining",
+        Rolle: "Trainer und Therapeut"
     },
     {
         ID: "2",
         Vorname: "Chris",
         Nachname: "Evans",
         Email: "chris.evans@gmail.com",
-        Passwort: "captainamerica"
+        Passwort: "captainamerica",
+        Bild: "chris evans.jpg",
+        Spezialisierung: "Schwimmmen",
+        Rolle: "Trainer"
     },
     {
         ID: "3",
         Vorname: "Dwayne",
         Nachname: "Johnson",
         Email: "dwayne.johnson@gmail.com",
-        Passwort: "therock"
+        Passwort: "therock",
+        Bild: "dwayneJohnson.jpg",
+        Spezialisierung: "Bodybuilding",
+        Rolle: "Trainer und CEO"
     },
     {
         ID: "4",
         Vorname: "Gal",
         Nachname: "Gadot",
         Email: "gal.gadot@gmail.com",
-        Passwort: "wonderwoman"
+        Passwort: "wonderwoman",
+        Bild: "gal Gadot.jpg",
+        Spezialisierung: "Ernährung",
+        Rolle: "Trainerin"
     },
     {
         ID: "5",
         Vorname: "Mrs",
         Nachname: "Bella",
         Email: "mrs.bella@gmail.com",
-        Passwort: "youtube"
+        Passwort: "youtube",
+        Bild: "mesbella.jpg",
+        Spezialisierung: "Crossfit",
+        Rolle: "Trainerin"
     },
     {
         ID: "6",
         Vorname: "Pamela",
         Nachname: "Reif",
         Email: "pamela.reif@gmail.com",
-        Passwort: "fitness"
+        Passwort: "fitness",
+        Bild: "pamelaReif.jpg",
+        Spezialisierung: "Bauch, Beine, Po",
+        Rolle: "Trainerin und CEO"
     }
 ]
 
