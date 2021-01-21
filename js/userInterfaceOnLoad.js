@@ -201,7 +201,7 @@ function createCardZiele(angemeldeterUser){
     return false;
 }
 
-
+/*
 function toggleRows(){
     let rows = document.getElementById("tabelle0").getElementsByTagName('tbody')[0].getElementsByTagName('tr');
     for (i = 0; i < rows.length; i++) {
@@ -209,7 +209,7 @@ function toggleRows(){
             this.classList.toggle('markiert');
         });
 }
-
-/*function checkFortschritt(){
+}
+function checkFortschritt(){
 
 }*/
