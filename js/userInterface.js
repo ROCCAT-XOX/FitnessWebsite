@@ -1,3 +1,4 @@
+//User wird ausgeloggt, wenn er auf Logout drückt, im localstorage wird der wert vvon aktiv auf "" gesetzt
 function logout(){
     localStorage.setItem("aktiv", "");
     window.location ="index.html";
@@ -35,18 +36,20 @@ function ModalneuesHauptzielHinzufügen(){
     }
 }
 
-
+//Hilfsvariabeln, um Elemeneten unique id's zu geben
 let i = 0;
 let s = 0;
 let r = 0;
 let m = 0;
 
-//Fügt ein neues Hauptziel hinzu und erstellt die Tabelle
+//Fügt ein neues Hauptziel hinzu und erstellt die Tabelle, sobald auf bestätigen bei dem Modal gedrückt wird
 function neuesHauptzielHinzufügen(){
 
+    //Modal schließt sich wieder
     let modalNewHauptziel = document.getElementById("newHauptziel");
     modalNewHauptziel.style.display = "none";
 
+    //Tabellen werden alle in das div gepackt
     let divCard = document.getElementById("userZiele");
 
     let divTabelle = document.createElement("div");
@@ -65,6 +68,7 @@ function neuesHauptzielHinzufügen(){
     let user = localStorage.getItem("aktiv");
     let angemeldeterUser = JSON.parse(localStorage.getItem(user + "+"));
     console.log(angemeldeterUser);
+    //Ziele werden als Objekt im localStorage gespeichert
     let ziele = new Object();
     ziele.hauptziel = document.getElementById("inputFieldHauptziel").value;
     ziele.unterziele = [];
@@ -101,9 +105,11 @@ function neuesHauptzielHinzufügen(){
         let id = this.id;
         console.log(id);
         
+        //Modal zum Hinzufügen eines Unterziels öffnet sich
         let modal = document.getElementById("newUnterziel");
         modal.style.display = "block";
 
+        //Erstellt den Tabellenkörper eines Hauptiziels, sobald der Bestätigen Button des Modals geklickt wird
         document.getElementById("unterzielsubmit").onclick=function(){
             let tabellenKörper = document.createElement("tbody");
             let trKörper = document.createElement("tr");
@@ -132,12 +138,12 @@ function neuesHauptzielHinzufügen(){
             console.log(document.getElementById(id).parentNode.parentNode.parentNode.parentNode.id);
             document.getElementById(document.getElementById(id).parentNode.parentNode.parentNode.parentNode.id).appendChild(tabellenKörper);
 
-            
+            //Modal wird wieder geschlossen
             let modalNewUnterziel = document.getElementById("newUnterziel");
             modalNewUnterziel.style.display = "none";
             
             let angemeldeterUser2 = JSON.parse(localStorage.getItem(user + "+"));
-           
+           //Zusäzlich wird das Unterziel auch in den localStorage gespeichert; dafür wird der Name des Hauptziels in der Tabelle mit denen im Localstorage verglichen und wenn es übereinstimmt, in das entsprechende Unterziele Array hinzugefügt
             for(let l=0; l<document.getElementsByTagName("table").length;l++){
                 if(document.getElementById(document.getElementById(id).parentNode.parentNode.parentNode.parentNode.id).getElementsByTagName("thead")[0].getElementsByTagName("tr")[0].getElementsByTagName("th")[0].innerHTML == angemeldeterUser2[l].hauptziel){
                     angemeldeterUser2[l].unterziele.push(document.getElementById("inputFieldUnterziel").value);
@@ -150,27 +156,31 @@ function neuesHauptzielHinzufügen(){
         }
     }
 
+    //Sobald dieser Button gedrückt wird, wird ein Hauptziel mit seinen Unterzielen gelöscht
     löschButtonHauptziel.onclick=function(){
         let angemeldeterUser3 = JSON.parse(localStorage.getItem(user + "+"));
         let id = this.id.slice(18);
+        //Hier wird die Tabelle zu dem zugehörigen Lösch Button herausgesucht
         let element = document.getElementById("table"+id);
         console.log(element);
         console.log(angemeldeterUser3);
-        for(let r=0; r<i; r++){
-            for(let l=0; l<i;l++){
-                if(document.getElementById(löschButtonHauptziel.parentNode.parentNode.parentNode.parentNode.id).getElementsByTagName("thead")[0].getElementsByTagName("tr")[0].getElementsByTagName("th")[0].innerHTML == angemeldeterUser3[l].hauptziel){
+        
+        //Es werden die Hauptziele im localStorage mit dem von dem Button zugehörigen Hauptziel verglichen und wenn sie übereinstimmen aus dem localStorage entfernt
+        for(let l=0; l<i;l++){
+            if(document.getElementById(löschButtonHauptziel.parentNode.parentNode.parentNode.parentNode.id).getElementsByTagName("thead")[0].getElementsByTagName("tr")[0].getElementsByTagName("th")[0].innerHTML == angemeldeterUser3[l].hauptziel){
                     
-                    console.log(document.getElementById(löschButtonHauptziel.parentNode.parentNode.parentNode.parentNode.id).getElementsByTagName("thead")[0].getElementsByTagName("tr")[0].getElementsByTagName("th")[0].innerHTML);
-                    console.log(angemeldeterUser3[l].hauptziel);
-                    console.log(l);
-                    angemeldeterUser3.splice(l,1);
-                    console.log(angemeldeterUser3);
-                    localStorage.setItem(user + "+", JSON.stringify(angemeldeterUser3));
-                    element.remove();
-                    return;
-                }
-            }     
-        }
+                console.log(document.getElementById(löschButtonHauptziel.parentNode.parentNode.parentNode.parentNode.id).getElementsByTagName("thead")[0].getElementsByTagName("tr")[0].getElementsByTagName("th")[0].innerHTML);
+                console.log(angemeldeterUser3[l].hauptziel);
+                console.log(l);
+                angemeldeterUser3.splice(l,1);
+                console.log(angemeldeterUser3);
+                localStorage.setItem(user + "+", JSON.stringify(angemeldeterUser3));
+                //Hier wird das Element Tabelle gelöscht
+                element.remove();
+                return;
+            }
+        }     
+       
     }
     
     return false;
