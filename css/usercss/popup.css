@@ -16,9 +16,9 @@
     background-color: #fefefe;
     margin: 10% auto; /* 15% from the top and centered */
     padding: 20px;
-    border: 1px solid #888;
+    border: 2px solid #888;
     width: fit-content;
-    height: 45%; /* Could be more or less, depending on screen size */
+    height: fit-content; /* Could be more or less, depending on screen size */
     border-radius: 10px;
   }
   
@@ -32,8 +32,8 @@
   
   .close:hover,
   .close:focus,
-  .closeEdit:hover,
-  .closeEdit:focus {
+  .closeUnterziel:hover,
+  .closeUnterziel:focus {
     color: black;
     text-decoration: none;
     cursor: pointer;
@@ -62,4 +62,9 @@
 }
 .css-input:focus {
   outline:none;
+}
+
+#inputFieldHauptziel, #inputFieldUnterziel{
+  margin-bottom: 20px;
+  margin-top: 20px;
 }
