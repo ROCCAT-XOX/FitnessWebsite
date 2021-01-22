@@ -198,7 +198,6 @@ function getAlter(){
      age--; 
     } 
     return age;
-
 }
 
 //Der Ziel-Teil von der Card wird erstellt
