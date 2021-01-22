@@ -1,6 +1,4 @@
-
-
-  .trainer{
+.trainer{
     width: 48%;
     height: 84%;
     float: left;
@@ -16,7 +14,15 @@
 .name{
     height: 10%;
 }
-      
+
+span{
+    margin-bottom: 5px;
+}
+
+p{
+    margin: 5px 5px 5px 5px;
+}
+
 .trainer2{
     width: 48%;
     height: 84%;

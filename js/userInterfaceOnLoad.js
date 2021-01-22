@@ -44,7 +44,7 @@ function createCardZiele(angemeldeterUser){
     let tabellenKopf = document.createElement("thead");
     let trKopf = document.createElement("tr");
     let thHauptziel = document.createElement("th");
-    thHauptziel.className = "targetcursor";
+    thHauptziel.className = "targetCursor";
     thHauptziel.innerHTML = angemeldeterUser[f].hauptziel;
     f++;
     if(angemeldeterUser[f-1].erledigt == 0){
@@ -106,11 +106,12 @@ function createCardZiele(angemeldeterUser){
         
         
         let tdUnterziel = document.createElement("td");
+        
         tdUnterziel.innerHTML = angemeldeterUser[f-1].unterziele[i].name;
 
 
         let tdUnterzielErledigt = document.createElement("td");
-       
+        tdUnterzielErledigt.className = "tableRow";
 
         if(angemeldeterUser[f-1].unterziele[i].erledigt == 0){
             tdUnterzielErledigt.innerHTML = "Nicht Erledigt"; //hier überprüfen ob erledigt 0 oder 1 und je nachdem das anzeigen
@@ -336,8 +337,8 @@ function createCardFortschrittOnLoad(){
     divLB.id = "ldBar_"+idBarId;
     divLB.className = "ldBar";
     divLB.className =   "label-center";
-    divLB.style.width = "37%";
-    divLB.style.height = "37%";
+    divLB.style.width = "30%";
+    divLB.style.height = "100%";
     divFortschritt.appendChild(divLB);
     renderIdBar();
 }
@@ -347,7 +348,7 @@ function createCardFortschrittOnLoad(){
 function renderIdBar(){
 	let config={
 	    "stroke": '#08f',
-	    "stroke-width": 3,
+	    "stroke-width": 5,
         "preset": "circle",
         "data-transition-in":"100",
 	    "value": fortschrittRounded
@@ -397,7 +398,7 @@ let trainer = [
         Nachname: "Johnson",
         Email: "dwayne.johnson@gmail.com",
         Passwort: "therock",
-        Bild: "dwayneJohnson.jpg",
+        Bild: "dwayneJohnsan.jpg",
         Spezialisierung: "Bodybuilding",
         Rolle: "Trainer und CEO",
         Telefonnummer: "+49 15908249328",

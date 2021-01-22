@@ -23,7 +23,7 @@
   }
   
   /* The Close Button */
-.close {
+.close, .closeUnterziel {
     color: rgb(0, 0, 0);
     float: right;
     font-size: 28px;

@@ -63,7 +63,15 @@
     text-align: center;
     color: white;
     font-size:35px;
-    margin: 0;
+    margin-right: 80%;
+    margin-left: 2%;
+    
+    
+    justify-self: start;
+}
+
+.title-user{
+    display: flex;
 }
 
 h2,h3{
@@ -78,7 +86,9 @@ html {
     background-size: cover;
   }
 
-.LogOut{
+#userLogout{
     text-align: right;
+    width: fit-content;
+    justify-self: end;
 }
 

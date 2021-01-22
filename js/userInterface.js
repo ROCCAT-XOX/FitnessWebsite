@@ -5,38 +5,6 @@ function logout(){
 }
 
 
-//Modal zum hinzufügen eines Hauptziels
-document.getElementById("btnZielAdd").addEventListener("click", ModalneuesHauptzielHinzufügen());
-
-function ModalneuesHauptzielHinzufügen(){
-    
-    let modalNewHauptziel = document.getElementById("newHauptziel");
-
-    // Get the button that opens the modal
-    let btn = document.getElementById("btnZielAdd");
-
-    // Get the <span> element that closes the modal
-    let span = document.getElementsByClassName("close")[0];
-
-    // When the user clicks on the button, open the modal
-    btn.onclick = function() {
-        modalNewHauptziel.style.display = "block";
-    }
-
-    // When the user clicks on <span> (x), close the modal
-    span.onclick = function() {
-        modalNewHauptziel.style.display = "none";
-    }
-
-    // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function(event) {
-        if (event.target == modalNewHauptziel) {
-            modalNewHauptziel.style.display = "none";
-        }
-    }
-}
-
-
 //Hilfsvariabeln, um Elemeneten unique id's zu geben
 let i = 0;
 let s = 0;
@@ -46,9 +14,9 @@ let m = 0;
 //Fügt ein neues Hauptziel hinzu und erstellt die Tabelle, sobald auf bestätigen bei dem Modal gedrückt wird
 function neuesHauptzielHinzufügen(){
 
-    //Modal schließt sich wieder
+     //Modal schließt sich wieder
     let modalNewHauptziel = document.getElementById("newHauptziel");
-    modalNewHauptziel.style.display = "none";
+    modalNewHauptziel.style.display = "none";  
 
     //Tabellen werden alle in das div gepackt
     let divCard = document.getElementById("userZiele");
@@ -60,11 +28,10 @@ function neuesHauptzielHinzufügen(){
     
     i++;
  
-    
     let tabellenKopf = document.createElement("thead");
     let trKopf = document.createElement("tr");
     let thHauptziel = document.createElement("th");
-    thHauptziel.className = "targetcursor";
+    thHauptziel.className = "targetCursor";
     thHauptziel.innerHTML = document.getElementById("inputFieldHauptziel").value;
 
     
@@ -128,13 +95,12 @@ function neuesHauptzielHinzufügen(){
             let tabellenKörper = document.createElement("tbody");
             let trKörper = document.createElement("tr");
             
-        
             let tdUnterziel = document.createElement("td");
+            tdUnterziel.className = "tableRow";
             tdUnterziel.innerHTML = document.getElementById("inputFieldUnterziel").value;
             
-            
-
             let tdUnterzielErledigt = document.createElement("td");
+            tdUnterziel.className = "tableRow";
             tdUnterzielErledigt.innerHTML = "Nicht Erledigt";
 
             let tdButtonLöschen = document.createElement("td");

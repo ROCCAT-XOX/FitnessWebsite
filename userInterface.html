@@ -47,9 +47,7 @@
     <!--TITLE-->
         <div class="title-user">
             <h1 id="title-user">Willkommen</h1>
-            <div class="LogOut">
-                <button id="userLogout" class="BtnLogOut" onclick="logout()">Ausloggen<i class="fa fa-sign-out-alt"></i></button>
-            </div>
+            <button id="userLogout" class="BtnLogOut" onclick="logout()">Ausloggen<i class="fa fa-sign-out-alt"></i></button>
         </div>
 <hr> 
 <div class="center">       
@@ -75,15 +73,15 @@
                             <button  onclick="return neuesHauptzielHinzufügen()" id="hauptzielsubmit" class="submit">Bestätigen</button>
                         </div>
                     </form>
-
                 </div>
             </div>
             <!--Modal Hauptziel End-->
+
             <!--THE MODAL Unterziel-->
             <div class="modal" id="newUnterziel" style="z-index: 1;">
                 <!--Modal Content-->
                 <div class="modal-content" id="newUnterziel-content" style="z-index: 1;">
-                    <span class="close">&times;</span>
+                    <span class="closeUnterziel">&times;</span>
                     <h3>Neues Unterziel anlegen</h3>
                     <!--FORM-->
                     <form name="zielAnlegen">
@@ -93,7 +91,6 @@
                             <button  id="unterzielsubmit" class="submit">Bestätigen</button>
                         </div>
                     </form>
-
                 </div>
             </div>
             <!--Modal Unterziel End-->

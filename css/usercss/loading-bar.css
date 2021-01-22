@@ -1,9 +1,10 @@
 .ldBar {
-  position: relative;
+  margin: 5% 0 0 0;
 left: 50%;
 -webkit-transform: translateX(-50%);
 -ms-transform: translateX(-50%);
 transform: translateX(-50%);
+font-size: 30px;
 
 }
 .ldBar.label-center > .ldBar-label {
@@ -18,12 +19,23 @@ transform: translateX(-50%);
 .ldBar-label:after {
   content: "%";
   display: inline;
-}
-
-.ldBar-label {
-  color: rgb(0, 0, 0);
-  font-family: 'Roboto';
-  font-size: 100%;
   
 }
 
+.ldBar-label {
+  color: #09f;
+    font-family: 'varela round';
+    
+}
+
+.ldBar path.mainline {
+  stroke-width: 10;
+  stroke: #09f;
+  stroke-linecap: round;
+}
+.ldBar path.baseline {
+  stroke-width: 14;
+  stroke: #a1a1a1;
+  stroke-linecap: round;
+  
+}
