@@ -61,13 +61,22 @@ function createCardZiele(angemeldeterUser){
         console.log(key);
         if(angemeldeterUser[key].erledigt == 0){
             angemeldeterUser[key].erledigt = 1;
+            for(let i = 0; i<angemeldeterUser[key].unterziele.length; i++){
+                if(angemeldeterUser[key].unterziele[i].erledigt == 0){
+                    angemeldeterUser[key].unterziele[i].erledigt = 1;
+                    localStorage.setItem(user + "+",JSON.stringify(angemeldeterUser))
+                }
+            }
+            
             localStorage.setItem(user + "+",JSON.stringify(angemeldeterUser))
             tabelle.classList.toggle('markiert');
+            location.reload();
         }
         else{ 
             angemeldeterUser[key].erledigt = 0;
             localStorage.setItem(user + "+",JSON.stringify(angemeldeterUser))
             tabelle.classList.toggle('markiert');
+            location.reload();
         }
     })
     
@@ -120,7 +129,7 @@ function createCardZiele(angemeldeterUser){
             tdUnterzielErledigt.innerHTML = "Erledigt";
         }
     
-        //Je nachdem, ob das Ziel erledigt ist oder nicht, muss er korrekt in die Tabelle geladen werden
+        //Je nachdem, ob das Ziel erledigt ist oder nicht, muss es korrekt in die Tabelle geladen werden
         
         tdUnterzielErledigt.addEventListener("click", function(){
             
@@ -132,6 +141,7 @@ function createCardZiele(angemeldeterUser){
                 angemeldeterUser[key2].unterziele[i].erledigt = 1;
                 localStorage.setItem(user + "+",JSON.stringify(angemeldeterUser))
                 console.log("test");
+
             }
             else{ 
                 angemeldeterUser[key2].unterziele[i].erledigt = 0;
@@ -142,11 +152,13 @@ function createCardZiele(angemeldeterUser){
             //in der Tabelle anzeigen, ob erledigt ist oder nicht
             if(angemeldeterUser[key2].unterziele[i].erledigt == 0){
                 tdUnterzielErledigt.innerHTML = "Nicht Erledigt"; //hier überprüfen ob erledigt 0 oder 1 und je nachdem das anzeigen
-                console.log("test")
+                console.log("test");
+                location.reload();
             }
             else{
                 tdUnterzielErledigt.innerHTML = "Erledigt";
-                console.log("test")
+                console.log("test");
+                location.reload();
             }
         })
         
@@ -174,6 +186,7 @@ function createCardZiele(angemeldeterUser){
                             angemeldeterUser4[i].unterziele.splice(r,1);
                             localStorage.setItem(user + "+", JSON.stringify(angemeldeterUser4));
                             document.getElementById(id).parentNode.parentNode.remove();
+                            location.reload();
                             return;
                         }
                     }
@@ -255,8 +268,7 @@ function createCardZiele(angemeldeterUser){
                     localStorage.setItem(user + "+", JSON.stringify(angemeldeterUser2));
                     return;
                 }
-            }     
-            
+            }        
         return false;
         }
     }
@@ -281,6 +293,7 @@ function createCardZiele(angemeldeterUser){
                 localStorage.setItem(user + "+", JSON.stringify(angemeldeterUser3));
                  //Hier wird das Element Tabelle gelöscht
                 element.remove();
+                location.reload();
                 return;
             }
         }     

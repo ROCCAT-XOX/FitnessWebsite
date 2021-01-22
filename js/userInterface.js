@@ -33,7 +33,6 @@ function neuesHauptzielHinzufügen(){
     let thHauptziel = document.createElement("th");
     thHauptziel.className = "targetCursor";
     thHauptziel.innerHTML = document.getElementById("inputFieldHauptziel").value;
-
     
     //Hauptziel wird in den localStorage des eingeloggten Users gespeichert
     let user = localStorage.getItem("aktiv");
@@ -48,7 +47,7 @@ function neuesHauptzielHinzufügen(){
     console.log(angemeldeterUser);
     console.log(angemeldeterUser[1]);
     localStorage.setItem(user + "+", JSON.stringify(angemeldeterUser));
-    
+
     let thButtonZiel = document.createElement("th");
     let buttonUnterziel = document.createElement("button");
     buttonUnterziel.className = "TableBtnUndertarget";
@@ -166,5 +165,4 @@ function neuesHauptzielHinzufügen(){
         }     
        
     }
-    return false;
 }

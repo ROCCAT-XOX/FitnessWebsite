@@ -33,7 +33,7 @@ document.getElementById("btnUnterzielAdd").addEventListener("click", ModalneuesU
 
 function ModalneuesUnterzielHinzufügen(){
     
-    let modalNewHauptziel = document.getElementById("newHauptziel");
+    let modalNewUnterziel = document.getElementById("newUnterziel");
 
     // Get the button that opens the modal
     let btn = document.getElementById("btnUnterzielAdd");
@@ -43,18 +43,18 @@ function ModalneuesUnterzielHinzufügen(){
 
     // When the user clicks on the button, open the modal
     btn.onclick = function() {
-        modalNewHauptziel.style.display = "block";
+        modalNewUnterziel.style.display = "block";
     }
 
     // When the user clicks on <span> (x), close the modal
     span.onclick = function() {
-        modalNewHauptziel.style.display = "none";
+        modalNewUnterziel.style.display = "none";
     }
 
     // When the user clicks anywhere outside of the modal, close it
     window.onclick = function(event) {
-        if (event.target == modalNewHauptziel) {
-            modalNewHauptziel.style.display = "none";
+        if (event.target == modalNewUnterziel) {
+            modalNewUnterziel.style.display = "none";
         }
     }
 }
