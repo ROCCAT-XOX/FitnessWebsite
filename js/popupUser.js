@@ -29,7 +29,7 @@ function ModalneuesHauptzielHinzufügen(){
     }
 }
 
-document.getElementById("btnUnterzielAdd").addEventListener("click", ModalneuesUnterzielHinzufügen());
+//document.getElementById("btnUnterzielAdd").addEventListener("click", ModalneuesUnterzielHinzufügen());
 
 function ModalneuesUnterzielHinzufügen(){
     
