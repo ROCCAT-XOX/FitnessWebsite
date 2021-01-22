@@ -36,6 +36,7 @@ function ModalneuesHauptzielHinzufügen(){
     }
 }
 
+
 //Hilfsvariabeln, um Elemeneten unique id's zu geben
 let i = 0;
 let s = 0;
@@ -63,6 +64,7 @@ function neuesHauptzielHinzufügen(){
     let tabellenKopf = document.createElement("thead");
     let trKopf = document.createElement("tr");
     let thHauptziel = document.createElement("th");
+    thHauptziel.className = "targetcursor";
     thHauptziel.innerHTML = document.getElementById("inputFieldHauptziel").value;
 
     
@@ -109,9 +111,16 @@ function neuesHauptzielHinzufügen(){
     buttonUnterziel.onclick=function(){
         let id = this.id;
         console.log(id);
+        let modal = document.getElementById("newUnterziel");
+        
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
         
         //Modal zum Hinzufügen eines Unterziels öffnet sich
-        let modal = document.getElementById("newUnterziel");
         modal.style.display = "block";
 
         //Erstellt den Tabellenkörper eines Hauptiziels, sobald der Bestätigen Button des Modals geklickt wird

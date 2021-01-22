@@ -44,6 +44,7 @@ function createCardZiele(angemeldeterUser){
     let tabellenKopf = document.createElement("thead");
     let trKopf = document.createElement("tr");
     let thHauptziel = document.createElement("th");
+    thHauptziel.className = "targetcursor";
     thHauptziel.innerHTML = angemeldeterUser[f].hauptziel;
     f++;
     if(angemeldeterUser[f-1].erledigt == 0){
@@ -105,7 +106,6 @@ function createCardZiele(angemeldeterUser){
         
         
         let tdUnterziel = document.createElement("td");
-        
         tdUnterziel.innerHTML = angemeldeterUser[f-1].unterziele[i].name;
 
 
@@ -194,8 +194,16 @@ function createCardZiele(angemeldeterUser){
     //Fügt ein neues Unterziel dem entsprechenden Hauptziel hinzu
     buttonUnterziel.onclick=function(){
         
-        //Modal zum Hinzufügen eines Unterziels öffnet sich
         let modal = document.getElementById("newUnterziel");
+        
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+        
+        //Modal zum Hinzufügen eines Unterziels öffnet sich
         modal.style.display = "block";
 
         //Erstellt den Tabellenkörper eines Hauptiziels, sobald der Bestätigen Button des Modals geklickt wird
@@ -328,8 +336,8 @@ function createCardFortschrittOnLoad(){
     divLB.id = "ldBar_"+idBarId;
     divLB.className = "ldBar";
     divLB.className =   "label-center";
-    divLB.style.width = "40%";
-    divLB.style.height = "40%";
+    divLB.style.width = "37%";
+    divLB.style.height = "37%";
     divFortschritt.appendChild(divLB);
     renderIdBar();
 }
@@ -389,7 +397,7 @@ let trainer = [
         Nachname: "Johnson",
         Email: "dwayne.johnson@gmail.com",
         Passwort: "therock",
-        Bild: "dwayneJohnsan.jpg",
+        Bild: "dwayneJohnson.jpg",
         Spezialisierung: "Bodybuilding",
         Rolle: "Trainer und CEO",
         Telefonnummer: "+49 15908249328",

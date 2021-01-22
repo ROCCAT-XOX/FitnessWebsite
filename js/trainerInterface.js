@@ -261,6 +261,8 @@ function createButtons(){
     divEditButtonSection.className = "editButtonSection";
     let buttonEdit = document.createElement("button");
     buttonEdit.className = "userEdit";
+    let buttonDetails = document.createElement("button");
+    buttonDetails.className = "moreInformation";
 
     buttonEdit.onclick=function(){
 
@@ -340,21 +342,30 @@ function createButtons(){
             localStorage.removeItem(key + "+");
         }
     }
-
+  
 
     let iButtonEdit = document.createElement("i");
     iButtonEdit.className = "fa fa-edit";
     let iButtonDelete = document.createElement("i");
     iButtonDelete.className = "fa fa-trash";
+    let iButtonDetails = document.createElement("i");
+    iButtonDetails.className = "fa fa-info";
 
     buttonEdit.appendChild(iButtonEdit);
     buttonDelete.appendChild(iButtonDelete);
+    buttonDetails.appendChild(iButtonDetails);
 
     divEditButtonSection.appendChild(buttonEdit);
     divEditButtonSection.appendChild(buttonDelete);
+    divEditButtonSection.appendChild(buttonDetails);
 
     divEditSection.appendChild(divEditButtonSection);
 
     return divEditSection;
     }
+
+    
+
+    
+
 }

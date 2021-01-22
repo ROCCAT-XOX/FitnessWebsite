@@ -1,5 +1,4 @@
-//document.getElementById("useredit").addEventListener("click", editKunde());
-
+document.getElementById("useredit").addEventListener("click", editKunde());
 function editKunde(){
 
 let modal1 = document.getElementById("secondModal");

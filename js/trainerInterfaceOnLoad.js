@@ -272,6 +272,16 @@ function createButtonsOnLoad(){
     let buttonEdit = document.createElement("button");
     buttonEdit.className = "userEdit";
     buttonEdit.setAttribute("id", "useredit" + userEmail);
+    let buttonDetails = document.createElement("button");
+    buttonDetails.className = "moreInformation";
+
+    //Geht auf die Detailseite des User
+    buttonDetails.onclick=function(){
+
+        console.log(buttonEdit.id.slice(8));
+        localStorage.setItem("aktiv", buttonEdit.id.slice(8));
+        window.location = "userInterfaceForTrainer.html";
+    }
 
     //----------------------------------------------Button zum Bearbeiten-----------------------------------------------//
 
@@ -361,12 +371,16 @@ function createButtonsOnLoad(){
     iButtonEdit.className = "fa fa-edit";
     let iButtonDelete = document.createElement("i");
     iButtonDelete.className = "fa fa-trash";
+    let iButtonDetails = document.createElement("i");
+    iButtonDetails.className = "fa fa-info";
 
     buttonEdit.appendChild(iButtonEdit);
     buttonDelete.appendChild(iButtonDelete);
-
+    buttonDetails.appendChild(iButtonDetails);
+    
     divEditButtonSection.appendChild(buttonEdit);
     divEditButtonSection.appendChild(buttonDelete);
+    divEditButtonSection.appendChild(buttonDetails);
 
     divEditSection.appendChild(divEditButtonSection);
 
